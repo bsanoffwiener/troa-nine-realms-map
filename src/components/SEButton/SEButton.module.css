@@ -1,0 +1,17 @@
+.sebutton {
+    cursor: pointer;
+    font-family: 'Oxanium';
+    font-size: 10pt;
+    background-color: #29363E;
+    color: #D6EEF5;
+    border: 1px solid #3E474F;
+    text-align: center;
+    margin: 4px;
+    padding: 4px 16px 2px 16px;
+}
+
+.sebutton:hover {
+    background-color: #424B52;
+    color: #F2F2F2;
+    border: 1px solid #70747A;
+}

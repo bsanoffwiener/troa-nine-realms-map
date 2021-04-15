@@ -1,0 +1,160 @@
+import React, { Suspense } from "react";
+import { ICelestialBody, IGalaxy, ISector } from '../../models';
+import { Descriptor, SectorRender, Stars, Zoomer } from '..';
+import { Canvas, ReactThreeFiber } from '@react-three/fiber';
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+import styles from './GalaxyRender.module.css';
+
+// extend({ OrbitControls });
+
+declare global {
+    namespace JSX {
+      interface IntrinsicElements {
+        orbitControls: ReactThreeFiber.Object3DNode<OrbitControls, typeof OrbitControls>
+      }
+    }
+  }
+
+interface GalaxyRenderProps {
+    galaxy: IGalaxy;
+}
+
+interface GalaxyRenderState {
+    selectedSector?: ISector;
+    selectedPlanet?: ICelestialBody;
+    selectedMoon?: ICelestialBody;
+    cameraTargetPos: number[];
+    cameraLookAtPos: number[];
+}
+
+// interface ICameraControlsProps {
+//     target: number[];
+// }
+
+// const CameraControls: React.FC<ICameraControlsProps> = (props: ICameraControlsProps) => {
+//     const { camera, gl: { domElement } } = useThree();
+//     const controls = useRef<any>();
+//     const target = new Vector3(props.target[0], props.target[1], 0);
+//     useFrame(() => {
+//         if (controls.current) {
+//             controls.current.update();
+//         }
+//     });
+//     return <orbitControls ref={controls} args={[camera, domElement]} target={target} />;
+// };
+
+export default class GalaxyRender extends React.Component<GalaxyRenderProps, GalaxyRenderState> {
+
+    private defaultCameraPosition = [0, 0, 60];
+    private defaultCameraLookAtPosition = [0, 0, 0];
+
+    constructor(props: GalaxyRenderProps) {
+        super(props);
+        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
+        this.state = {
+            selectedSector: deepSpace,
+            selectedPlanet: undefined,
+            selectedMoon: undefined,
+            cameraTargetPos: this.defaultCameraPosition,
+            cameraLookAtPos: this.defaultCameraLookAtPosition
+        };
+    }
+
+    onSectorSelected = (data: ISector) => {
+        this.setState({
+            selectedSector: data,
+            selectedPlanet: undefined,
+            selectedMoon: undefined
+        });
+
+        this.setState({
+            cameraTargetPos: [data.x, data.y, data.radius * 1.5],
+            cameraLookAtPos: [data.x, data.y, 0]
+        });
+
+    }
+
+    onPlanetSelected = (data: ICelestialBody) => {
+        this.setState({
+            selectedSector: undefined,
+            selectedPlanet: data,
+            selectedMoon: undefined,
+            cameraTargetPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z + data.scale * 1 + 2],
+            cameraLookAtPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z],
+        });
+    }
+
+    onMoonSelected = (data: ICelestialBody) => {
+        this.setState({
+            selectedSector: undefined,
+            selectedPlanet: undefined,
+            selectedMoon: data,
+            cameraTargetPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z + data.scale * 1 + 1],
+            // cameraLookAtPos: [data.parent.parent.x, data.parent.parent.y, 0],
+            cameraLookAtPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z],
+        });
+    }
+
+    onZoomOutClick = () => {
+        const { selectedPlanet, selectedMoon } = this.state;
+        if (selectedMoon) {
+            this.onSectorSelected(selectedMoon.parent.parent as ISector);
+            return;
+        }
+
+        if (selectedPlanet) {
+            this.onSectorSelected(selectedPlanet.parent as ISector);
+            return;
+        }
+
+        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
+        if (deepSpace) {
+            this.onSectorSelected(deepSpace);
+            return;
+        }
+    }
+
+    selectDefaultSector = () => {
+        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
+        this.setState({
+            selectedSector: deepSpace,
+            selectedPlanet: undefined,
+            selectedMoon: undefined,
+            cameraTargetPos: this.defaultCameraPosition,
+            cameraLookAtPos: this.defaultCameraLookAtPosition
+        });
+    }
+
+    render(): JSX.Element {
+        const { galaxy } = this.props;
+        const { cameraTargetPos, cameraLookAtPos } = this.state;
+        return <div className={styles.wrapper}>
+            <Canvas camera={{ position: [this.defaultCameraPosition[0], this.defaultCameraPosition[1], this.defaultCameraPosition[2]] }} onPointerMissed={this.selectDefaultSector}>
+                <ambientLight />
+                <pointLight position={[0, 0, 40]} />
+                <Suspense fallback={null}>
+                {galaxy.sectors.map(sector => <SectorRender
+                    key={sector.name}
+                    sector={sector}
+                    onPlanetSelected={this.onPlanetSelected}
+                    onSectorSelected={this.onSectorSelected}
+                    onMoonSelected={this.onMoonSelected}
+                />)}
+                </Suspense>
+                <Stars />
+                {/* <CameraControls target={cameraTargetPos}  /> */}
+                <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
+            </Canvas>
+            <Descriptor
+                sector={this.state.selectedSector}
+                planet={this.state.selectedPlanet}
+                moon={this.state.selectedMoon}
+                onZoomOut={this.onZoomOutClick}
+            />
+            <div className={styles.header}>Stargate Dimensions Map</div>
+            {/* <Index galaxy={galaxy} /> */}
+            {/* <div className={styles.footer}>Created by GThoro</div> */}
+        </div>
+    }
+}

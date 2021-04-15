@@ -1,0 +1,62 @@
+.wrapper {
+    padding: 10px;
+    position: absolute;
+    top: 76px;
+    right: 16px;
+    background-color: rgba(26, 34, 40, 0.7);
+    border: 1px solid #5C757C;
+    border: 1px solid #5C757C;
+    font-family: 'Oxanium';
+    width: 360px;
+}
+
+.title {
+    font-family: 'Fraulein';
+    border-bottom: 1px solid #4D6371;
+    font-size: 24pt;
+    margin-top: -30px;
+    color: #FBFBFB;
+    text-align: center;
+}
+
+.title::first-line {
+    font-size: 36pt;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 10px;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.spawn {
+    font-style: italic;
+    color: greenyellow;
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 16px;
+}
+
+.buttons div {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.description {
+    margin-top: 16px;
+    font-size: 14px;
+    /* font-style: italic; */
+}

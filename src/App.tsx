@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { GalaxyRender } from './components';
+import { loadGalaxy } from './helpers/loader';
+import { IGalaxy } from './models';
+
+interface AppState {
+    galaxy?: IGalaxy;
 }
 
-export default App;
+export default class App extends React.Component<{}, AppState> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            galaxy: undefined
+        }
+    }
+
+    componentDidMount() {
+        this.loadGalaxyData();
+    }
+
+    async loadGalaxyData() {
+        const galaxy = await loadGalaxy('data.json');
+        this.setState({ galaxy: galaxy });
+    }
+
+    render() {
+        const { galaxy } = this.state;
+        if (galaxy == null) {
+            return <div>Loading...</div>
+        }
+        return <GalaxyRender galaxy={galaxy} />
+    }
+}

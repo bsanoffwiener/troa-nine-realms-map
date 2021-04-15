@@ -1,13 +1,29 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: 'Fraulein';
+    src: local('Fraulein'), url(./assets/fonts/frau1.ttf) format('truetype');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+    font-family: 'Oxanium';
+    src: local('Oxanium'), url(./assets/fonts/Oxanium-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Stargate';
+    src: local('Stargate'), url(./assets/fonts/STARGATE.TTF) format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #222;
+    color: #D0E8EF;
+    width: 100vw;
+    height: 100vh;
+}
+
+#root {
+    height: 100%;
 }

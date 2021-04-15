@@ -1,0 +1,11 @@
+.wrapper {
+    padding: 10px;
+    position: absolute;
+    top: 76px;
+    left: 16px;
+    background-color: rgba(26, 34, 40, 0.7);
+    border: 1px solid #5C757C;
+    border: 1px solid #5C757C;
+    font-family: 'Oxanium';
+    width: 160px;
+}
