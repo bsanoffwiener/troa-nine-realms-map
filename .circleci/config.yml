@@ -1,22 +1,16 @@
-version: 2
+version: '2.1'
+orbs:
+  node: circleci/node@x.y
 jobs:
-  build:
-    docker:
-      - image: circleci/node@3.0.0
+  build_and_deploy:
+    executor: node/default
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Setup Dependencies
-          command: sudo npm install -g surge && npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Build
-          command: npm run build
-      - run:
-          name: Deploy on Surge.sh
-          command: surge build
+      - node/install-packages
+      - run: npm run build
+      - run: sudo npm install -g surge
+      - run: surge build
+workflows:
+  deploy:
+    jobs:
+      - build_and_deploy
