@@ -1,0 +1,37 @@
+.header {
+    position: absolute;
+    top: 20px;
+    color: white;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-variant: small-caps;
+    font-family: 'Stargate';
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 4px;
+    font-size: 8pt;
+}
+
+.loadercontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loader {
+    font-family: 'Oxanium';
+    font-size: 10pt;
+    background-color: #29363E;
+    color: #D6EEF5;
+    border: 1px solid #3E474F;
+    text-align: center;
+    padding: 4px 16px 2px 16px;
+}

@@ -4,7 +4,6 @@ import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events
 import { ICelestialBody, ISector } from '../../models';
 import { CelestialBodyRender } from '..';
 import { CircleBufferGeometry, Vector3 } from 'three';
-import { setHoverPointer } from '../../helpers/mouse';
 
 interface ISectorRenderProps {
     sector: ISector;
@@ -29,16 +28,6 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
         this.circleGeometry = new CircleBufferGeometry(props.sector.radius, 64);
     }
 
-    onMouseEnter = () => {
-        this.setState({ hover: true });
-        setHoverPointer(true);
-    }
-
-    onMouseLeave = () => {
-        this.setState({ hover: false });
-        setHoverPointer(false);
-    }
-
     onClickHandler = (event: ThreeEvent<MouseEvent>) => {
         // event.stopPropagation();
         this.props.onSectorSelected(this.props.sector);
@@ -51,17 +40,16 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
                 <lineBasicMaterial attach="material" color={sector.color} opacity={0.2} transparent={true} />
             </lineSegments>
             <mesh
+                name="Sector"
                 renderOrder={15}
-                onPointerOver={(e) => this.onMouseEnter()}
-                onPointerOut={(e) => this.onMouseLeave()}
                 onClick={this.onClickHandler}
             >
                 {/* {sector.name === "Deep Space" ? <circleBufferGeometry args={[sector.radius, 64]} /> : <sphereBufferGeometry args={[sector.radius, 64, 64]} />} */}
-                <circleBufferGeometry args={[sector.radius, 64]} />
+                <sphereBufferGeometry args={[sector.radius, 64, 64]} />
                 <meshStandardMaterial
                     attach="material"
                     color={sector.color}
-                    opacity={0.01}
+                    opacity={0.02}
                     transparent={true}
                 />
             </mesh>

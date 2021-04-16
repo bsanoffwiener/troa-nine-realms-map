@@ -4,11 +4,13 @@ import { GalaxyRender } from './components';
 import { loadGalaxy } from './helpers/loader';
 import { IGalaxy } from './models';
 
-interface AppState {
+import styles from './App.module.css';
+
+interface IAppState {
     galaxy?: IGalaxy;
 }
 
-export default class App extends React.Component<{}, AppState> {
+export default class App extends React.Component<{}, IAppState> {
 
     constructor(props: any) {
         super(props);
@@ -28,9 +30,10 @@ export default class App extends React.Component<{}, AppState> {
 
     render() {
         const { galaxy } = this.state;
-        if (galaxy == null) {
-            return <div>Loading...</div>
-        }
-        return <GalaxyRender galaxy={galaxy} />
+        return <>
+            {galaxy ? <GalaxyRender galaxy={galaxy} /> : <div className={styles.loadercontainer}><div className={styles.loader}>Loading galaxy data, please wait...</div></div>}
+            <div className={styles.header}>Stargate Dimensions Map</div>
+            {/* <div className={styles.footer}>Created by GThoro</div> */}
+        </>
     }
 }

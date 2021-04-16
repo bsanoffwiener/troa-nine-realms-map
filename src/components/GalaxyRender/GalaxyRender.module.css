@@ -10,23 +10,3 @@
     margin: 8px;
 }
 
-.header {
-    position: absolute;
-    top: 20px;
-    color: white;
-    left: 0px;
-    right: 0px;
-    text-align: center;
-    font-variant: small-caps;
-    font-family: 'Stargate';
-    font-size: 24pt;
-    font-weight: bold;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    padding: 4px;
-    font-size: 8pt;
-}

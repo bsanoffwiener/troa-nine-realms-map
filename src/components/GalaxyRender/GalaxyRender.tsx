@@ -1,12 +1,15 @@
-import React, { Suspense } from "react";
-import { ICelestialBody, IGalaxy, ISector } from '../../models';
-import { Descriptor, SectorRender, Stars, Zoomer } from '..';
-import { Canvas, ReactThreeFiber } from '@react-three/fiber';
+import React, { Suspense, useRef } from "react";
+import { Canvas, extend, ReactThreeFiber, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Vector3, Intersection } from "three";
+import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
+
+import { ICelestialBody, IGalaxy, ISector } from '../../models';
+import { Descriptor, Index, SectorRender, Stars, Zoomer } from '..';
 
 import styles from './GalaxyRender.module.css';
 
-// extend({ OrbitControls });
+extend({ OrbitControls });
 
 declare global {
     namespace JSX {
@@ -16,11 +19,11 @@ declare global {
     }
   }
 
-interface GalaxyRenderProps {
+interface IGalaxyRenderProps {
     galaxy: IGalaxy;
 }
 
-interface GalaxyRenderState {
+interface IGalaxyRenderState {
     selectedSector?: ISector;
     selectedPlanet?: ICelestialBody;
     selectedMoon?: ICelestialBody;
@@ -28,28 +31,28 @@ interface GalaxyRenderState {
     cameraLookAtPos: number[];
 }
 
-// interface ICameraControlsProps {
-//     target: number[];
-// }
+interface ICameraControlsProps {
+    target: number[];
+}
 
-// const CameraControls: React.FC<ICameraControlsProps> = (props: ICameraControlsProps) => {
-//     const { camera, gl: { domElement } } = useThree();
-//     const controls = useRef<any>();
-//     const target = new Vector3(props.target[0], props.target[1], 0);
-//     useFrame(() => {
-//         if (controls.current) {
-//             controls.current.update();
-//         }
-//     });
-//     return <orbitControls ref={controls} args={[camera, domElement]} target={target} />;
-// };
+const CameraControls: React.FC<ICameraControlsProps> = (props: ICameraControlsProps) => {
+    const { camera, gl: { domElement } } = useThree();
+    const controls = useRef<any>();
+    const target = new Vector3(props.target[0], props.target[1], props.target[2]);
+    useFrame(() => {
+        if (controls.current) {
+            controls.current.update();
+        }
+    });
+    return <orbitControls ref={controls} args={[camera, domElement]} target={target}  enableDamping={true} />;
+};
 
-export default class GalaxyRender extends React.Component<GalaxyRenderProps, GalaxyRenderState> {
+export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IGalaxyRenderState> {
 
     private defaultCameraPosition = [0, 0, 60];
     private defaultCameraLookAtPosition = [0, 0, 0];
 
-    constructor(props: GalaxyRenderProps) {
+    constructor(props: IGalaxyRenderProps) {
         super(props);
         const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
         this.state = {
@@ -91,7 +94,6 @@ export default class GalaxyRender extends React.Component<GalaxyRenderProps, Gal
             selectedPlanet: undefined,
             selectedMoon: data,
             cameraTargetPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z + data.scale * 1 + 1],
-            // cameraLookAtPos: [data.parent.parent.x, data.parent.parent.y, 0],
             cameraLookAtPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z],
         });
     }
@@ -126,11 +128,26 @@ export default class GalaxyRender extends React.Component<GalaxyRenderProps, Gal
         });
     }
 
+    raycasterFilter = (intersects: Intersection[], state: RootState): Intersection[] => {
+        // check if planet is hit
+        const planetObject = intersects.find(intersection => intersection.object.name === "Planet");
+        if (planetObject) {
+            return [planetObject];
+        }
+
+        // if not, then we do not care anymore
+        return intersects;
+    }
+
     render(): JSX.Element {
         const { galaxy } = this.props;
         const { cameraTargetPos, cameraLookAtPos } = this.state;
         return <div className={styles.wrapper}>
-            <Canvas camera={{ position: [this.defaultCameraPosition[0], this.defaultCameraPosition[1], this.defaultCameraPosition[2]] }} onPointerMissed={this.selectDefaultSector}>
+            <Canvas
+                camera={{ position: [this.defaultCameraPosition[0], this.defaultCameraPosition[1], this.defaultCameraPosition[2]] }}
+                onPointerMissed={this.selectDefaultSector}
+                raycaster={{ filter: (intersects, state) => this.raycasterFilter(intersects, state) }}
+            >
                 <ambientLight />
                 <pointLight position={[0, 0, 40]} />
                 <Suspense fallback={null}>
@@ -143,7 +160,7 @@ export default class GalaxyRender extends React.Component<GalaxyRenderProps, Gal
                 />)}
                 </Suspense>
                 <Stars />
-                {/* <CameraControls target={cameraTargetPos}  /> */}
+                <CameraControls target={cameraLookAtPos}  />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
             </Canvas>
             <Descriptor
@@ -152,9 +169,12 @@ export default class GalaxyRender extends React.Component<GalaxyRenderProps, Gal
                 moon={this.state.selectedMoon}
                 onZoomOut={this.onZoomOutClick}
             />
-            <div className={styles.header}>Stargate Dimensions Map</div>
-            {/* <Index galaxy={galaxy} /> */}
-            {/* <div className={styles.footer}>Created by GThoro</div> */}
+            <Index
+                galaxy={galaxy}
+                onPlanetSelected={this.onPlanetSelected}
+                onSectorSelected={this.onSectorSelected}
+                onMoonSelected={this.onMoonSelected}
+            />
         </div>
     }
 }

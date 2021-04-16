@@ -4,25 +4,23 @@ import { ICelestialBody, ISector } from '../../models';
 
 import styles from './Descriptor.module.css';
 
-interface DescriptorProps {
+interface IDescriptorProps {
     sector?: ISector;
     planet?: ICelestialBody;
     moon?: ICelestialBody;
     onZoomOut: () => void;
 }
 
-export default class Descriptor extends React.Component<DescriptorProps> {
+export default class Descriptor extends React.Component<IDescriptorProps> {
 
-    renderList(header: string, list: string[]) {
+    renderPlainList(header: string, list: string[]) {
         if (!list || list.length === 0) {
             return;
         }
         return (<>
             <div>{header}</div>
             <div>
-                <ul className={styles.list}>
-                    {list.sort((a, b) => a.localeCompare(b)).map(item => <li key={item}>{item}</li>)}
-                </ul>
+                {list.sort((a, b) => a.localeCompare(b)).join(', ')}
             </div>
         </>);
     }
@@ -33,7 +31,7 @@ export default class Descriptor extends React.Component<DescriptorProps> {
             {sector.description ? <div className={styles.description}>{sector.description}</div> : ''}
             <div className={styles.grid}>
                 <div>PvP</div><div>{sector.pve_protected ? 'Not allowed' : 'Allowed'}</div>
-                {this.renderList('Ores in asteroids', sector.asteroids.ores)}
+                {this.renderPlainList('Ores in asteroids', sector.asteroids.ores)}
             </div>
         </div>
     }
@@ -44,8 +42,8 @@ export default class Descriptor extends React.Component<DescriptorProps> {
             {sector.description ? <div className={styles.description}>{sector.description}</div> : ''}
             <div className={styles.grid}>
                 <div>PvP</div><div>{sector.pve_protected ? 'Not allowed' : 'Allowed'}</div>
-                {this.renderList('Planets', sector.planets.map(planet => planet.name))}
-                {this.renderList('Ores in asteroids', sector.asteroids.ores)}
+                {this.renderPlainList('Planets', sector.planets.map(planet => planet.name))}
+                {this.renderPlainList('Ores in asteroids', sector.asteroids.ores)}
             </div>
             <div className={styles.buttons}>
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
@@ -62,7 +60,7 @@ export default class Descriptor extends React.Component<DescriptorProps> {
             <div className={styles.grid}>
                 <div>PvP</div><div>{planet.pve_protected ? 'Not allowed' : 'Allowed'}</div>
                 <div>Gravity</div><div>{planet.gravity.toFixed(2)}g</div>
-                {this.renderList('Ores', planet.ores)}
+                {this.renderPlainList('Ores', planet.ores)}
             </div>
             <div className={styles.buttons}>
                 <GPS coords={planet.coords} name={planet.name} color="#ADD8E6" />
@@ -77,7 +75,7 @@ export default class Descriptor extends React.Component<DescriptorProps> {
             <div className={styles.grid}>
                 <div>PvP</div><div>{moon.pve_protected ? 'Not allowed' : 'Allowed'}</div>
                 <div>Gravity</div><div>{moon.gravity.toFixed(2)}g</div>
-                {this.renderList('Ores', moon.ores)}
+                {this.renderPlainList('Ores', moon.ores)}
             </div>
             {moon.description ? <div className={styles.description}>{moon.description}</div> : ''}
             <div className={styles.buttons}>

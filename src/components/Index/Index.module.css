@@ -8,4 +8,35 @@
     border: 1px solid #5C757C;
     font-family: 'Oxanium';
     width: 160px;
+    font-size: 14px;
+    /* max-height: 400px; */
+    overflow: auto;
+}
+
+.title {
+    font-family: 'Fraulein';
+    border-bottom: 1px solid #4D6371;
+    font-size: 24pt;
+    margin-top: -20px;
+    margin-bottom: 4px;
+    color: #FBFBFB;
+    text-align: center;
+}
+
+.list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.list .list {
+    margin-left: 10px;
+}
+
+.list li span {
+    cursor: pointer;
+}
+
+.list li span:hover {
+    text-decoration: underline;
 }

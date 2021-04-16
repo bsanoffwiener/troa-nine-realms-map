@@ -3,7 +3,6 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { Mesh, TextureLoader } from "three";
 
 import { ICelestialBody } from '../../models';
-import { setHoverPointer } from "../../helpers/mouse";
 
 interface ICelestialBodyProps {
     body: ICelestialBody;
@@ -27,12 +26,11 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
     return <group>
         <mesh
             ref={bodyMesh}
+            name="Planet"
             position={[props.body.x, props.body.y, props.body.z]}
             visible
             scale={props.body.scale / 3}
             onClick={(event) => { event.stopPropagation(); props.onSelected(props.body)}}
-            onPointerOver={(event) => setHoverPointer(true)}
-            onPointerOut={(event) => setHoverPointer(false)}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial
@@ -46,6 +44,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
         {props.isMoon ? '' :
         <mesh
             ref={cloudsMesh}
+            name="Clouds"
             renderOrder={10}
             position={[props.body.x, props.body.y, props.body.z]}
             visible
