@@ -15,9 +15,9 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
     const bodyMesh = useRef<Mesh>();
     const cloudsMesh = useRef<Mesh>();
 
-    const colorMap = useLoader(TextureLoader, props.body.colormap);
-    const heightMap = useLoader(TextureLoader,  props.body.heightmap);
-    const cloudMap = useLoader(TextureLoader, `2k_earth_clouds.jpg`);
+    const colorMap = useLoader(TextureLoader, `textures/${props.body.colormap}`);
+    const heightMap = useLoader(TextureLoader,  `textures/${props.body.heightmap}`);
+    const cloudMap = useLoader(TextureLoader, `textures/2k_earth_clouds.jpg`);
 
     const model = useLoader(GLTFLoader, 'CelestialBodyModel.glb');
     const geometry: BufferGeometry = (model.nodes.Cube as any).geometry;
