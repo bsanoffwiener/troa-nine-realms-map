@@ -11,7 +11,9 @@
             "description": "Deep space covers all visible space.",
             "pve_protected": false,
             "planets": [],
-            "asteroids": []
+            "asteroids": {
+                "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Uranium", "Trinium", "Naquadah", "Neutronium", "Deuterium"]
+            }
         },
         {
             "name": "Trade Hub",
@@ -39,7 +41,8 @@
                     "y": 2,
                     "z": 0.8,
                     "has_atmosphere": true,
-                    "img": "2k_earth_daymap.jpg",
+                    "colormap": "Earth_color.png",
+                    "heightmap": "Earth.png",
                     "coords": [-10119631.51, 8497689.74, 401560.82],
                     "scale": 1,
                     "color": "white",
@@ -49,14 +52,16 @@
                     "moons": [
                         {
                             "name": "Moon",
-                            "x": -0.84,
-                            "y": 2,
-                            "z": 0.8,
+                            "x": 0.10,
+                            "y": 2.41,
+                            "z": 0.34,
                             "has_atmosphere": false,
-                            "img": "2k_moon.jpg",
-                            "scale": 0.2,
+                            "colormap": "Moon_color.png",
+                            "heightmap": "Moon.png",
                             "gravity": 0.25,
-                            "ores": ["Gold", "Platinum"]
+                            "scale": 0.2,
+                            "coords": [-9951123.47, 8557051.6, 370749.63],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
                         }
                     ]
                 },
@@ -66,13 +71,40 @@
                     "y": -0.82,
                     "z": -1.54,
                     "has_atmosphere": true,
-                    "img": "2k_mars.jpg",
+                    "colormap": "Abydos_color.png",
+                    "heightmap": "Abydos.png",
                     "coords": [-10921136.63, 7090014.77, -770866.34],
                     "scale": 1,
                     "color": "white",
                     "gravity": 1.2,
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Deuterium", "Uranium", "Naquadah"],
                     "moons": [
+                        {
+                            "name": "Moon I",
+                            "x": -1.21,
+                            "y": -0.74,
+                            "z": -1.42,
+                            "has_atmosphere": false,
+                            "colormap": "2k_moon.jpg",
+                            "heightmap": "Moon.png",
+                            "gravity": 0.25,
+                            "scale": 0.2,
+                            "coords": [-10706473.13, 7130249.08, -658157.74],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        },
+                        {
+                            "name": "Moon II",
+                            "x": -1.31,
+                            "y": -0.85,
+                            "z": -1.92,
+                            "has_atmosphere": true,
+                            "colormap": "2k_mars.jpg",
+                            "heightmap": "Mars.png",
+                            "gravity": 1.2,
+                            "scale": 0.2,
+                            "coords": [-10754280.44, 7075078.08, -861581.84],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 },
                 {
@@ -81,18 +113,32 @@
                     "y": -1.08,
                     "z": -1.02,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Langara_color.png",
+                    "heightmap": "Langara.png",
                     "coords": [-8669241.61, 6959524.38, -509650.43],
                     "scale": 1.0,
                     "color": "white",
                     "gravity": 1.0,
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Uranium", "Platinum"],
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": 3.0,
+                            "y": -0.5,
+                            "z": -0.97,
+                            "has_atmosphere": true,
+                            "colormap": "2k_mars.jpg",
+                            "heightmap": "Mars.png",
+                            "gravity": 1.0,
+                            "scale": 0.2,
+                            "coords": [-8502348.17, 7198748.01, -434924.16],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 }
             ],
             "asteroids": {
-                "ores": []
+                "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Uranium", "Trinium", "Naquadah", "Neutronium", "Deuterium"]
             }
         },
         {
@@ -111,7 +157,8 @@
                     "y": -2.75,
                     "z": -0.05,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Asuras_color.png",
+                    "heightmap": "Asuras.png",
                     "pve_protected": true,
                     "coords": [-10245819.10, -8876811.10, -23533.89],
                     "scale": 1,
@@ -122,15 +169,17 @@
                     "moons": [
                         {
                             "name": "Moon",
-                            "x": -1.29,
-                            "y": -2.75,
-                            "z": -0.05,
+                            "x": -0.34,
+                            "y": -2.82,
+                            "z": 0.83,
                             "has_atmosphere": false,
                             "pve_protected": true,
-                            "img": "2k_moon.jpg",
+                            "colormap": "Europa_color.png",
+                            "heightmap": "Europa.png",
                             "gravity": 0.25,
-                            "scale": 0.3,
-                            "ores": []
+                            "scale": 0.2,
+                            "coords": [-10171647.26, -8905364.84, 161314.51],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
                         }
                     ]
                 },
@@ -141,7 +190,8 @@
                     "y": 0.35,
                     "z": 0.16,
                     "has_atmosphere": true,
-                    "img": "2k_mars.jpg",
+                    "colormap": "Hoff_color.png",
+                    "heightmap": "Hoff.png",
                     "coords": [-8590329.38, -7327125.68, 78901.23],
                     "scale": 1,
                     "color": "white",
@@ -149,6 +199,19 @@
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Uranium", "Deuterium", "Naquadah"],
                     "spawn": false,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": 2.9,
+                            "y": 0.2,
+                            "z": 0.73,
+                            "has_atmosphere": false,
+                            "colormap": "Moon_color.png",
+                            "heightmap": "Moon.png",
+                            "gravity": 0.25,
+                            "scale": 0.2,
+                            "coords": [-8552097.47, -7397547.27, 166610.24],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 },
                 {
@@ -157,7 +220,8 @@
                     "y": 1.78,
                     "z": -1.09,
                     "has_atmosphere": true,
-                    "img": "2k_earth_daymap.jpg",
+                    "colormap": "Othala_color.png",
+                    "heightmap": "Othala.png",
                     "coords": [-11307874.94, -6611347.52, -544998.91],
                     "scale": 1,
                     "color": "white",
@@ -165,11 +229,24 @@
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Uranium", "Platinum", "Neutronium"],
                     "spawn": false,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": -3.29,
+                            "y": 1.89,
+                            "z": -1.13,
+                            "has_atmosphere": true,
+                            "colormap": "2k_snowmoon.jpg",
+                            "heightmap": "Moon.png",
+                            "gravity": 1.0,
+                            "scale": 0.2,
+                            "coords": [-11396120.8, -6552530.07, -463538.87],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 }
             ],
             "asteroids": {
-                "ores": ["Gold", "Platinum", "Iron", "Trinium", "Cobalt", "Uranium"]
+                "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Uranium", "Trinium", "Naquadah", "Neutronium", "Deuterium"]
             }
         },
         {
@@ -186,7 +263,8 @@
                     "y": -2.27,
                     "z": 1.01,
                     "has_atmosphere": true,
-                    "img": "2k_earth_daymap.jpg",
+                    "colormap": "Celestes_color.png",
+                    "heightmap": "Celestes.png",
                     "coords": [9712389.32, -1137478.97, 504236.54],
                     "scale": 1,
                     "color": "white",
@@ -194,6 +272,19 @@
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Uranium"],
                     "spawn": true,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": 0.01,
+                            "y": -2.22,
+                            "z": 1.14,
+                            "has_atmosphere": false,
+                            "colormap": "2k_moon.jpg",
+                            "heightmap": "Moon.png",
+                            "gravity": 0.25,
+                            "scale": 0.2,
+                            "coords": [-8502348.17, 7198748.01, -434924.16],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 },
                 {
@@ -202,7 +293,8 @@
                     "y": 1.89,
                     "z": -1.29,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Iratus_color.png",
+                    "heightmap": "Iratus.png",
                     "coords": [10090426.68, 944499.42, -646509.96],
                     "scale": 1,
                     "color": "white",
@@ -218,7 +310,8 @@
                     "y": 0.01,
                     "z": 0.06,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "P3X-888_color.png",
+                    "heightmap": "P3X-888.png",
                     "coords": [8781433.38, 3113.61, 31451.55],
                     "scale": 1,
                     "color": "white",
@@ -226,6 +319,19 @@
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Uranium", "Platinum", "Deuterium", "Naquadah", "Neutronium", "Trinium", "Titanium"],
                     "spawn": false,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": -2.03,
+                            "y": 0.33,
+                            "z": -0.42,
+                            "has_atmosphere": false,
+                            "colormap": "2k_mars.jpg",
+                            "heightmap": "Mars.png",
+                            "gravity": 0.25,
+                            "scale": 0.2,
+                            "coords": [-8502348.17, 7198748.01, -434924.16],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 },
                 {
@@ -234,7 +340,8 @@
                     "y": -1.4,
                     "z": -0.5,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Malice_color.png",
+                    "heightmap": "Malice.png",
                     "coords": [11206836.70, -700446.88, -250858.04],
                     "scale": 1,
                     "color": "white",
@@ -242,11 +349,24 @@
                     "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Uranium", "Platinum", "Deuterium", "Naquadah", "Neutronium", "Trinium", "Titanium"],
                     "spawn": false,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": 2.89,
+                            "y": -1.25,
+                            "z": -0.94,
+                            "has_atmosphere": true,
+                            "colormap": "2k_snowmoon.jpg",
+                            "heightmap": "Moon.png",
+                            "gravity": 1.0,
+                            "scale": 0.2,
+                            "coords": [-8502348.17, 7198748.01, -434924.16],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 }
             ],
             "asteroids": {
-                "ores": []
+                "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Uranium", "Trinium", "Naquadah", "Neutronium", "Deuterium"]
             }
         },
         {
@@ -264,7 +384,8 @@
                     "y": 0,
                     "z": 0,
                     "has_atmosphere": true,
-                    "img": "2k_earth_daymap.jpg",
+                    "colormap": "Orilla_color.png",
+                    "heightmap": "Orilla.png",
                     "coords": [-459178.55, -3640156.44, -9699819.36],
                     "scale": 1,
                     "color": "white",
@@ -281,7 +402,8 @@
                     "y": -2,
                     "z": 0,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Novus_color.png",
+                    "heightmap": "Novus.png",
                     "coords": [-3577096.13, -2324477.53, -9044469.56],
                     "scale": 1,
                     "color": "white",
@@ -298,7 +420,8 @@
                     "y": 2,
                     "z": 0,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "M6H-987_color.png",
+                    "heightmap": "M6H-987.png",
                     "coords": [-3142094.33, -2409726.81, -9198030.24],
                     "scale": 1,
                     "color": "purple",
@@ -307,6 +430,19 @@
                     "spawn": false,
                     "pve_protected": false,
                     "moons": [
+                        {
+                            "name": "Moon",
+                            "x": 8.06,
+                            "y": -0.57,
+                            "z": 2.03,
+                            "has_atmosphere": true,
+                            "colormap": "2k_snowmoon.jpg",
+                            "heightmap": "Moon.png",
+                            "gravity": 1.0,
+                            "scale": 0.2,
+                            "coords": [-8502348.17, 7198748.01, -434924.16],
+                            "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Ice", "Silver", "Gold", "Platinum"]
+                        }
                     ]
                 },
                 {
@@ -315,7 +451,8 @@
                     "y": -2,
                     "z": 0,
                     "has_atmosphere": true,
-                    "img": "2k_makemake_fictional.jpg",
+                    "colormap": "Dakara_color.png",
+                    "heightmap": "Dakara.png",
                     "coords": [-1762363.66, -4797610.14, -7529876.17],
                     "scale": 1,
                     "color": "white",
@@ -328,7 +465,7 @@
                 }
             ],
             "asteroids": {
-                "ores": []
+                "ores": ["Iron", "Nickel", "Silicon", "Cobalt", "Magnesium", "Uranium", "Trinium", "Naquadah", "Neutronium", "Deuterium"]
             }
         }
     ]

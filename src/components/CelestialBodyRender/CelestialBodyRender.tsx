@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { Mesh, TextureLoader } from "three";
+import { BufferGeometry, Mesh, TextureLoader } from "three";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import { ICelestialBody } from '../../models';
 
 interface ICelestialBodyProps {
     body: ICelestialBody;
-    isMoon: boolean;
     onSelected: (data: ICelestialBody) => void;
 }
 
@@ -15,8 +15,16 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
     const bodyMesh = useRef<Mesh>();
     const cloudsMesh = useRef<Mesh>();
 
-    const colorMap = useLoader(TextureLoader, props.body.img);
+    const colorMap = useLoader(TextureLoader, props.body.colormap);
+    const heightMap = useLoader(TextureLoader,  props.body.heightmap);
     const cloudMap = useLoader(TextureLoader, `2k_earth_clouds.jpg`);
+
+    const model = useLoader(GLTFLoader, 'CelestialBodyModel.glb');
+    const geometry: BufferGeometry = (model.nodes.Cube as any).geometry;
+    // var tempGeometry = new Geometry().fromBufferGeometry( geometry );
+    // tempGeometry.mergeVertices();
+    // tempGeometry.computeVertexNormals();
+    // const geom = tempGeometry.toBufferGeometry();
 
     useFrame(() => {
         if (bodyMesh.current) bodyMesh.current.rotation.y += 0.001;
@@ -29,26 +37,28 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
             name="Planet"
             position={[props.body.x, props.body.y, props.body.z]}
             visible
-            scale={props.body.scale / 3}
+            scale={props.body.scale / 2.5}
             onClick={(event) => { event.stopPropagation(); props.onSelected(props.body)}}
+            geometry={geometry}
         >
-            <sphereBufferGeometry args={[1, 32, 32]} />
+            {/* <sphereBufferGeometry args={[1, 32, 32]} /> */}
             <meshStandardMaterial
+                flatShading={false}
                 attach="material"
-                color={props.body.color || 'white'}
-                // displacementMap={heightMap}
-                // displacementScale={0.05}
+                displacementMap={heightMap}
+                displacementScale={0.05}
+                displacementBias={-0.02}
                 map={colorMap}
             />
         </mesh>
-        {props.isMoon ? '' :
+        {!props.body.has_atmosphere ? '' :
         <mesh
             ref={cloudsMesh}
             name="Clouds"
             renderOrder={10}
             position={[props.body.x, props.body.y, props.body.z]}
             visible
-            scale={props.body.scale / 2.5}
+            scale={(props.body.scale / 2.5) * 0.9}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial

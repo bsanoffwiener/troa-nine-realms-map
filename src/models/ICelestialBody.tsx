@@ -8,7 +8,8 @@ export interface ICelestialBody {
     pve_protected: boolean;
     moons: ICelestialBody[];
     parent: ICelestialBody | ISector;
-    img: string;
+    colormap: string;
+    heightmap: string;
     x: number;
     y: number;
     z: number;

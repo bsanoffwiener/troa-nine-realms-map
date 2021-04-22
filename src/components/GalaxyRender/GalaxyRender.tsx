@@ -13,11 +13,11 @@ extend({ OrbitControls });
 
 declare global {
     namespace JSX {
-      interface IntrinsicElements {
-        orbitControls: ReactThreeFiber.Object3DNode<OrbitControls, typeof OrbitControls>
-      }
+        interface IntrinsicElements {
+            orbitControls: ReactThreeFiber.Object3DNode<OrbitControls, typeof OrbitControls>
+        }
     }
-  }
+}
 
 interface IGalaxyRenderProps {
     galaxy: IGalaxy;
@@ -83,7 +83,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
             selectedSector: undefined,
             selectedPlanet: data,
             selectedMoon: undefined,
-            cameraTargetPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z + data.scale * 1 + 2],
+            cameraTargetPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z + data.scale * 1],
             cameraLookAtPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z],
         });
     }
@@ -93,7 +93,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
             selectedSector: undefined,
             selectedPlanet: undefined,
             selectedMoon: data,
-            cameraTargetPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z + data.scale * 1 + 1],
+            cameraTargetPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z + data.scale * 1],
             cameraLookAtPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z],
         });
     }
@@ -148,7 +148,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 onPointerMissed={this.selectDefaultSector}
                 raycaster={{ filter: (intersects, state) => this.raycasterFilter(intersects, state) }}
             >
-                <ambientLight />
+                <ambientLight intensity={0.1} />
                 <pointLight position={[0, 0, 40]} />
                 <Suspense fallback={null}>
                 {galaxy.sectors.map(sector => <SectorRender

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GalaxyRender } from './components';
+import { GalaxyRender, Loader } from './components';
 import { loadGalaxy } from './helpers/loader';
 import { IGalaxy } from './models';
 
@@ -31,7 +31,7 @@ export default class App extends React.Component<{}, IAppState> {
     render() {
         const { galaxy } = this.state;
         return <>
-            {galaxy ? <GalaxyRender galaxy={galaxy} /> : <div className={styles.loadercontainer}><div className={styles.loader}>Loading galaxy data, please wait...</div></div>}
+            {galaxy ? <GalaxyRender galaxy={galaxy} /> : <Loader />}
             <div className={styles.header}>Stargate Dimensions Map</div>
             {/* <div className={styles.footer}>Created by GThoro</div> */}
         </>

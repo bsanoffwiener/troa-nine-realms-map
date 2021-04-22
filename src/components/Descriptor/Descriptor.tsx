@@ -79,6 +79,7 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             </div>
             {moon.description ? <div className={styles.description}>{moon.description}</div> : ''}
             <div className={styles.buttons}>
+                <GPS coords={moon.coords} name={`${moon.parent.name}'s ${moon.name}`} color="#ADD8E6" />
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
             </div>
         </div>

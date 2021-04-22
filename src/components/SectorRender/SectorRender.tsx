@@ -37,8 +37,9 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
         return <>
             <lineSegments>
                 <edgesGeometry attach="geometry" args={[this.circleGeometry]} />
-                <lineBasicMaterial attach="material" color={sector.color} opacity={0.2} transparent={true} />
+                <lineBasicMaterial attach="material" color={sector.color} opacity={sector.name === "Deep Space" ? 0.8 : 0.2} transparent={true} />
             </lineSegments>
+            {sector.name === "Deep Space" ? '' :
             <mesh
                 name="Sector"
                 renderOrder={15}
@@ -52,7 +53,7 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
                     opacity={0.02}
                     transparent={true}
                 />
-            </mesh>
+            </mesh>}
         </>
     }
 
@@ -60,12 +61,13 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
         const { sector } = this.props;
         const pos = new Vector3(sector.x, sector.y, sector.z);
         const celestialBodiesInSector = sector.planets.map(planet => {
-            const bodies = planet.moons.map(moon => <CelestialBodyRender key={moon.name} body={moon} onSelected={this.props.onMoonSelected} isMoon={true} />);
-            bodies.push(<CelestialBodyRender key={planet.name} body={planet} onSelected={this.props.onPlanetSelected} isMoon={false}/>);
+            const bodies = planet.moons.map(moon => <CelestialBodyRender key={`${moon.parent.name}-${moon.name}`} body={moon} onSelected={this.props.onMoonSelected} />);
+            bodies.push(<CelestialBodyRender key={planet.name} body={planet} onSelected={this.props.onPlanetSelected} />);
             return bodies;
         });
         return <group position={pos}>
-            {sector.name === "Deep Space" ? '' : this.renderSectorSphere(sector)}
+            {/* {sector.name === "Deep Space" ? '' : this.renderSectorSphere(sector)} */}
+            {this.renderSectorSphere(sector)}
             {celestialBodiesInSector}
         </group>
     }
