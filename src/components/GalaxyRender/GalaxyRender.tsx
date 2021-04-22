@@ -72,8 +72,8 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         });
 
         this.setState({
-            cameraTargetPos: [data.x, data.y, data.radius * 1.5],
-            cameraLookAtPos: [data.x, data.y, 0]
+            cameraTargetPos: [data.x, data.y, data.z + data.radius * 1.5],
+            cameraLookAtPos: [data.x, data.y, data.z]
         });
 
     }
