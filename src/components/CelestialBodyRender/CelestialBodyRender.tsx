@@ -19,7 +19,8 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
     const heightMap = useLoader(TextureLoader,  `textures/${props.body.heightmap}`);
     const cloudMap = useLoader(TextureLoader, `textures/2k_earth_clouds.jpg`);
 
-    const model = useLoader(GLTFLoader, 'CelestialBodyModel.glb');
+    // const model = useLoader(GLTFLoader, 'CelestialBodyModel.glb');
+    const model = useLoader(GLTFLoader, 'CelestialBodyNoSeam.glb');
     const geometry: BufferGeometry = (model.nodes.Cube as any).geometry;
     // var tempGeometry = new Geometry().fromBufferGeometry( geometry );
     // tempGeometry.mergeVertices();
@@ -47,7 +48,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 attach="material"
                 displacementMap={heightMap}
                 displacementScale={0.05}
-                displacementBias={-0.02}
+                displacementBias={0.0}
                 map={colorMap}
             />
         </mesh>
@@ -58,7 +59,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
             renderOrder={10}
             position={[props.body.x, props.body.y, props.body.z]}
             visible
-            scale={(props.body.scale / 2.5) * 0.9}
+            scale={(props.body.scale / 2.5)}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial

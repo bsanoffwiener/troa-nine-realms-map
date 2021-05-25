@@ -5,7 +5,7 @@ import { Vector3, Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
 import { ICelestialBody, IGalaxy, ISector } from '../../models';
-import { Descriptor, Index, SectorRender, Stars, Zoomer } from '..';
+import { Descriptor, Index, PlayerTracker, SectorRender, Stars, Zoomer } from '..';
 
 import styles from './GalaxyRender.module.css';
 
@@ -162,6 +162,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Stars />
                 <CameraControls target={cameraLookAtPos}  />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
+                <PlayerTracker />
             </Canvas>
             <Descriptor
                 sector={this.state.selectedSector}
