@@ -42,15 +42,15 @@ export default class PlayerTracker extends React.Component<{}, IPlayerTrackerSta
         if (this.intervalId) {
             clearInterval(this.intervalId);
         }
-    }    
+    }
 
     private async doTick() {
-        const response = await fetch('http://sg-tracker.infcore.net/data/get');
+        const response = await fetch('https://sg-tracker.infcore.net/data/get');
         const data: ITrackedPlayer[] = await response.json();
         this.setState({ players: data });
     }
 
-    render(): JSX.Element {  
+    render(): JSX.Element {
         const textOptions = {
             font: this.font,
             size: 0.1,
@@ -69,7 +69,7 @@ export default class PlayerTracker extends React.Component<{}, IPlayerTrackerSta
                         flatShading={false}
                         attach="material"
                     />
-                </mesh>            
+                </mesh>
                 <mesh
                     position={[player.X / 500000, player.Y / 500000, player.Z / 500000]}
                     visible
