@@ -4,6 +4,8 @@ import { BufferGeometry, Mesh, TextureLoader } from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import { ICelestialBody } from '../../models';
+import { scaleDivider } from "../../helpers/scale";
+import TextRender from "../TextRender/TextRender";
 
 interface ICelestialBodyProps {
     body: ICelestialBody;
@@ -15,17 +17,14 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
     const bodyMesh = useRef<Mesh>();
     const cloudsMesh = useRef<Mesh>();
 
-    const colorMap = useLoader(TextureLoader, `textures/${props.body.colormap}`);
-    const heightMap = useLoader(TextureLoader,  `textures/${props.body.heightmap}`);
+    const textureBase = (props.body.definition) ? props.body.definition.id : "Triton";
+
+    const colorMap = useLoader(TextureLoader, `textures/${textureBase}_color.jpg`);
+    const heightMap = useLoader(TextureLoader, `textures/${textureBase}.jpg`);
     const cloudMap = useLoader(TextureLoader, `textures/2k_earth_clouds.jpg`);
 
-    // const model = useLoader(GLTFLoader, 'CelestialBodyModel.glb');
     const model = useLoader(GLTFLoader, 'CelestialBodyNoSeam.glb');
     const geometry: BufferGeometry = (model.nodes.Cube as any).geometry;
-    // var tempGeometry = new Geometry().fromBufferGeometry( geometry );
-    // tempGeometry.mergeVertices();
-    // tempGeometry.computeVertexNormals();
-    // const geom = tempGeometry.toBufferGeometry();
 
     useFrame(() => {
         if (bodyMesh.current) bodyMesh.current.rotation.y += 0.001;
@@ -36,9 +35,9 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
         <mesh
             ref={bodyMesh}
             name="Planet"
-            position={[props.body.x, props.body.y, props.body.z]}
+            position={[props.body.x / scaleDivider, props.body.y / scaleDivider, props.body.z / scaleDivider]}
             visible
-            scale={props.body.scale / 2.5}
+            scale={props.body.radius / scaleDivider}
             onClick={(event) => { event.stopPropagation(); props.onSelected(props.body)}}
             geometry={geometry}
         >
@@ -52,14 +51,14 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 map={colorMap}
             />
         </mesh>
-        {!props.body.has_atmosphere ? '' :
+        {props.body.definition && !props.body.definition.has_atmosphere ? '' :
         <mesh
             ref={cloudsMesh}
             name="Clouds"
             renderOrder={10}
-            position={[props.body.x, props.body.y, props.body.z]}
+            position={[props.body.x / scaleDivider, props.body.y / scaleDivider, props.body.z / scaleDivider]}
             visible
-            scale={(props.body.scale / 2.5)}
+            scale={(props.body.atmosphere_radius / scaleDivider)}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial
@@ -70,6 +69,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 map={cloudMap}
             />
         </mesh>}
+        <TextRender label={props.body.name} x={props.body.x} y={props.body.y + props.body.atmosphere_radius} z={props.body.z} />
     </group>;
 }
 

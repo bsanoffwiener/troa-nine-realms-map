@@ -5,9 +5,7 @@ import { ICelestialBody, ISector } from '../../models';
 import styles from './Descriptor.module.css';
 
 interface IDescriptorProps {
-    sector?: ISector;
-    planet?: ICelestialBody;
-    moon?: ICelestialBody;
+    celestialBody?: ICelestialBody;
     onZoomOut: () => void;
 }
 
@@ -17,10 +15,11 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         if (!list || list.length === 0) {
             return;
         }
+        list.sort((a, b) => a.localeCompare(b))
         return (<>
             <div>{header}</div>
             <div>
-                {list.sort((a, b) => a.localeCompare(b)).join(', ')}
+                {list.join(', ')}
             </div>
         </>);
     }
@@ -30,73 +29,54 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             <div className={styles.title}>{sector.name}</div>
             {sector.description ? <div className={styles.description}>{sector.description}</div> : ''}
             <div className={styles.grid}>
-                <div>PvP</div><div>{sector.pve_protected ? 'Not allowed' : 'Allowed'}</div>
+                <div>PvP</div><div>{sector.pve ? 'Not allowed' : 'Allowed'}</div>
                 {this.renderPlainList('Ores in asteroids', sector.asteroids.ores)}
             </div>
         </div>
     }
 
-    renderSector(sector: ISector) {
-        return <div className={styles.wrapper}>
-            <div className={styles.title}>{sector.name}</div>
-            {sector.description ? <div className={styles.description}>{sector.description}</div> : ''}
-            <div className={styles.grid}>
-                <div>PvP</div><div>{sector.pve_protected ? 'Not allowed' : 'Allowed'}</div>
-                {this.renderPlainList('Planets', sector.planets.map(planet => planet.name))}
-                {this.renderPlainList('Ores in asteroids', sector.asteroids.ores)}
-            </div>
-            <div className={styles.buttons}>
-                <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
-            </div>
-        </div>
-    }
-
-    renderPlanet(planet: ICelestialBody) {
+    renderCelestialBody(body: ICelestialBody) {
         return <div className={styles.wrapper}>
             {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
-            <div className={styles.title}>{planet.name}</div>
-            {planet.spawn ? <div className={styles.spawn}>This is a starter planet of {planet.parent.name} sector</div> : ''}
-            {planet.description ? <div className={styles.description}>{planet.description}</div> : ''}
+            <div className={styles.title}>{body.name}</div>
+            {/* {planet.spawn ? <div className={styles.spawn}>This is a starter planet of {planet.parent.name} sector</div> : ''} */}
+            {body.description ? <div className={styles.description}>{body.description}</div> : ''}
             <div className={styles.grid}>
-                <div>PvP</div><div>{planet.pve_protected ? 'Not allowed' : 'Allowed'}</div>
-                <div>Gravity</div><div>{planet.gravity.toFixed(2)}g</div>
-                {this.renderPlainList('Ores', planet.ores)}
+                <div>PvP</div><div>{body.pve ? 'Not allowed' : 'Allowed'}</div>
+                {!body.definition ? '' : <>
+                    <div>Gravity</div><div>{body.definition.gravity.toFixed(2)}g</div>
+                    <div>Oxygen density</div><div>{body.definition.oxygen_density.toFixed(2)}</div>
+                    <div>Atmosphere density</div><div>{body.definition.density.toFixed(2)}</div>
+                    {body.definition.max_wind_speed ? <><div>Max wind speed</div><div>{body.definition.max_wind_speed.toFixed(2)} km/h</div></> : ''}
+                    {this.renderPlainList('Ores', body.definition.ores)}
+                </>
+                }
             </div>
             <div className={styles.buttons}>
-                <GPS coords={planet.coords} name={planet.name} color="#ADD8E6" />
-                <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
-            </div>
-        </div>
-    }
-
-    renderMoon(moon: ICelestialBody) {
-        return <div className={styles.wrapper}>
-            <div className={styles.title}>{moon.name}</div>
-            <div className={styles.grid}>
-                <div>PvP</div><div>{moon.pve_protected ? 'Not allowed' : 'Allowed'}</div>
-                <div>Gravity</div><div>{moon.gravity.toFixed(2)}g</div>
-                {this.renderPlainList('Ores', moon.ores)}
-            </div>
-            {moon.description ? <div className={styles.description}>{moon.description}</div> : ''}
-            <div className={styles.buttons}>
-                <GPS coords={moon.coords} name={`${moon.parent.name}'s ${moon.name}`} color="#ADD8E6" />
+                <GPS coords={[body.x, body.y, body.z]} name={body.name} color="#ADD8E6" />
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
             </div>
         </div>
     }
 
     render() {
-        const { sector, planet, moon } = this.props;
-        if (moon) {
-            return this.renderMoon(moon);
-        } else if (planet) {
-            return this.renderPlanet(planet);
-        } else if (sector && sector.name === "Deep Space") {
-            return this.renderDeepSpace(sector);
-        } else if (sector) {
-            return this.renderSector(sector);
+        const { celestialBody } = this.props;
+        if (celestialBody) {
+            return this.renderCelestialBody(celestialBody);
+        } else {
+            return this.renderDeepSpace({
+                name: 'Deep Space',
+                pve: false,
+                asteroids: {
+                    ores: ["Everything"]
+                },
+                x: 0,
+                y: 0,
+                z: 0,
+                planets: [],
+                radius: 0,
+                color: '#00000'
+            });
         }
-        return <div></div>;
-
     }
 }

@@ -24,7 +24,7 @@ export default class App extends React.Component<{}, IAppState> {
     }
 
     async loadGalaxyData() {
-        const galaxy = await loadGalaxy('data.json');
+        const galaxy = await loadGalaxy('datav2.json');
         this.setState({ galaxy: galaxy });
     }
 

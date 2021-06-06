@@ -4,6 +4,7 @@ import * as THREE from 'three';
 
 import { ITrackedPlayer } from '../../models';
 import Oxanium from './Oxanium_Regular.json';
+import { scaleDivider } from "../../helpers/scale";
 
 // import styles from './PlayerTracker.module.css';
 
@@ -60,7 +61,7 @@ export default class PlayerTracker extends React.Component<{}, IPlayerTrackerSta
         return <>
             {players.map(player => <group key={player.Name}>
                 <mesh
-                    position={[player.X / 500000, player.Y / 500000, player.Z / 500000]}
+                    position={[player.X / scaleDivider, player.Y / scaleDivider, player.Z / scaleDivider]}
                     visible
                     scale={0.01}
                 >
@@ -71,7 +72,7 @@ export default class PlayerTracker extends React.Component<{}, IPlayerTrackerSta
                     />
                 </mesh>
                 <mesh
-                    position={[player.X / 500000, player.Y / 500000, player.Z / 500000]}
+                    position={[player.X / scaleDivider, player.Y / scaleDivider, player.Z / scaleDivider]}
                     visible
                 >
                     <textGeometry attach='geometry' args={[player.Name, textOptions]} />

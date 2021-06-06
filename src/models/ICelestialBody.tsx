@@ -1,21 +1,15 @@
-import { ISector } from "./ISector";
+import { ICelestialBodyDefinition } from "./IDefinition";
 
 export interface ICelestialBody {
     name: string;
-    gravity: number;
-    ores: string[];
+    definition_id?: string;
+    definition?: ICelestialBodyDefinition;
     spawn: boolean;
-    pve_protected: boolean;
-    moons: ICelestialBody[];
-    parent: ICelestialBody | ISector;
-    colormap: string;
-    heightmap: string;
+    pve: boolean;
     x: number;
     y: number;
     z: number;
-    coords: number[];
-    scale: number;
-    color?: string;
-    has_atmosphere: boolean;
+    radius: number;
+    atmosphere_radius: number;
     description?: string;
 }

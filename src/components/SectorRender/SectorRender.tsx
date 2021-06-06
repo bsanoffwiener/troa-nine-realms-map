@@ -2,7 +2,6 @@ import React from 'react';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
 
 import { ICelestialBody, ISector } from '../../models';
-import { CelestialBodyRender } from '..';
 import { CircleBufferGeometry, Vector3 } from 'three';
 
 interface ISectorRenderProps {
@@ -61,9 +60,10 @@ export default class SectorRender extends React.Component<ISectorRenderProps, IS
         const { sector } = this.props;
         const pos = new Vector3(sector.x, sector.y, sector.z);
         const celestialBodiesInSector = sector.planets.map(planet => {
-            const bodies = planet.moons.map(moon => <CelestialBodyRender key={`${moon.parent.name}-${moon.name}`} body={moon} onSelected={this.props.onMoonSelected} />);
-            bodies.push(<CelestialBodyRender key={planet.name} body={planet} onSelected={this.props.onPlanetSelected} />);
-            return bodies;
+            // const bodies = planet.moons.map(moon => <CelestialBodyRender key={`${moon.parent.name}-${moon.name}`} body={moon} onSelected={this.props.onMoonSelected} />);
+            // bodies.push(<CelestialBodyRender key={planet.name} body={planet} onSelected={this.props.onPlanetSelected} />);
+            // return bodies;
+            return [];
         });
         return <group position={pos}>
             {/* {sector.name === "Deep Space" ? '' : this.renderSectorSphere(sector)} */}

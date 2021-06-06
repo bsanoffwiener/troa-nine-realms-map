@@ -4,9 +4,9 @@ import { IGalaxy } from "./IGalaxy";
 
 export interface ISector {
     name: string;
-    pve_protected: boolean;
+    pve: boolean;
     planets: ICelestialBody[];
-    parent: ISector;
+    parent?: ISector;
     asteroids: IAsteroids;
     x: number;
     y: number;

@@ -1,14 +1,12 @@
 import React from 'react';
 import { SEButton } from '..';
-import { ICelestialBody, IGalaxy, ISector } from '../../models';
+import { ICelestialBody, IGalaxy } from '../../models';
 
 import styles from './Index.module.css';
 
 interface IIndexProps {
     galaxy: IGalaxy;
-    onSectorSelected: (data: ISector) => void;
-    onPlanetSelected: (data: ICelestialBody) => void;
-    onMoonSelected: (data: ICelestialBody) => void;
+    onCelestialBodySelected: (data: ICelestialBody) => void;
 }
 
 interface IIndexState {
@@ -28,9 +26,10 @@ export default class Index extends React.Component<IIndexProps, IIndexState> {
         if (!list || list.length === 0) {
             return;
         }
+        list.sort((a, b) => a.localeCompare(b));
         return (<>
             <ul className={styles.list}>
-                {list.sort((a, b) => a.localeCompare(b)).map(item => <li key={item}>{item}</li>)}
+                {list.map(item => <li key={item}>{item}</li>)}
             </ul>
         </>);
     }
@@ -44,21 +43,9 @@ export default class Index extends React.Component<IIndexProps, IIndexState> {
     }
 
     renderIndex(galaxy: IGalaxy) {
-        const data = galaxy.sectors.map(sector => {
-            if (sector.planets && sector.planets.length > 0) {
-                const planets = sector.planets.map(planet => {
-                    if (planet.moons && planet.moons.length > 0) {
-                        const moons = planet.moons.map(moon => {
-                            return <li key={moon.parent.name + moon.name}><span onClick={() => this.props.onMoonSelected(moon)}>{moon.name}</span></li>
-                        });
-                        return <li key={planet.name}><span onClick={() => this.props.onPlanetSelected(planet)}>{planet.name}</span> <ul className={styles.list}>{moons}</ul></li>;
-                    }
-                    return <li key={planet.name}><span onClick={() => this.props.onPlanetSelected(planet)}>{planet.name}</span></li>;
-                })
-                return <li key={sector.name}><span onClick={() => this.props.onSectorSelected(sector)}>{sector.name}</span> <ul className={styles.list}>{planets}</ul></li>;
-            }
-            return <li key={sector.name}><span onClick={() => this.props.onSectorSelected(sector)}>{sector.name}</span></li>;
-        })
+        const data = galaxy.celestial_bodies.map(body => {
+            return <li key={body.name}><span onClick={() => this.props.onCelestialBodySelected(body)}>{body.name}</span></li>;
+        });
 
         return <>
             <ul className={styles.list}>{data}</ul>

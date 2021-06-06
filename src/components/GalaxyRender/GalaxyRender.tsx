@@ -4,10 +4,11 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Vector3, Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
-import { ICelestialBody, IGalaxy, ISector } from '../../models';
-import { Descriptor, Index, PlayerTracker, SectorRender, Stars, Zoomer } from '..';
+import { ICelestialBody, IGalaxy } from '../../models';
+import { CelestialBodyRender, Descriptor, Index, PlayerTracker, Stars, Zoomer } from '..';
 
 import styles from './GalaxyRender.module.css';
+import { scaleDivider } from "../../helpers/scale";
 
 extend({ OrbitControls });
 
@@ -24,9 +25,7 @@ interface IGalaxyRenderProps {
 }
 
 interface IGalaxyRenderState {
-    selectedSector?: ISector;
-    selectedPlanet?: ICelestialBody;
-    selectedMoon?: ICelestialBody;
+    selectedCelestialBody?: ICelestialBody;
     cameraTargetPos: number[];
     cameraLookAtPos: number[];
 }
@@ -54,75 +53,24 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
 
     constructor(props: IGalaxyRenderProps) {
         super(props);
-        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
         this.state = {
-            selectedSector: deepSpace,
-            selectedPlanet: undefined,
-            selectedMoon: undefined,
+            selectedCelestialBody: undefined,
             cameraTargetPos: this.defaultCameraPosition,
             cameraLookAtPos: this.defaultCameraLookAtPosition
         };
     }
 
-    onSectorSelected = (data: ISector) => {
+    onCelestialBodySelected = (data: ICelestialBody) => {
         this.setState({
-            selectedSector: data,
-            selectedPlanet: undefined,
-            selectedMoon: undefined
-        });
-
-        this.setState({
-            cameraTargetPos: [data.x, data.y, data.z + data.radius * 1.5],
-            cameraLookAtPos: [data.x, data.y, data.z]
-        });
-
-    }
-
-    onPlanetSelected = (data: ICelestialBody) => {
-        this.setState({
-            selectedSector: undefined,
-            selectedPlanet: data,
-            selectedMoon: undefined,
-            cameraTargetPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z + data.scale * 1],
-            cameraLookAtPos: [data.x + data.parent.x, data.y + data.parent.y, data.z + data.parent.z],
-        });
-    }
-
-    onMoonSelected = (data: ICelestialBody) => {
-        this.setState({
-            selectedSector: undefined,
-            selectedPlanet: undefined,
-            selectedMoon: data,
-            cameraTargetPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z + data.scale * 1],
-            cameraLookAtPos: [data.x + data.parent.parent.x, data.y + data.parent.parent.y, data.z + data.parent.parent.z],
+            selectedCelestialBody: data,
+            cameraTargetPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider + 1],
+            cameraLookAtPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider],
         });
     }
 
     onZoomOutClick = () => {
-        const { selectedPlanet, selectedMoon } = this.state;
-        if (selectedMoon) {
-            this.onSectorSelected(selectedMoon.parent.parent as ISector);
-            return;
-        }
-
-        if (selectedPlanet) {
-            this.onSectorSelected(selectedPlanet.parent as ISector);
-            return;
-        }
-
-        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
-        if (deepSpace) {
-            this.onSectorSelected(deepSpace);
-            return;
-        }
-    }
-
-    selectDefaultSector = () => {
-        const deepSpace = this.props.galaxy.sectors.find(sector => sector.name === "Deep Space");
         this.setState({
-            selectedSector: deepSpace,
-            selectedPlanet: undefined,
-            selectedMoon: undefined,
+            selectedCelestialBody: undefined,
             cameraTargetPos: this.defaultCameraPosition,
             cameraLookAtPos: this.defaultCameraLookAtPosition
         });
@@ -145,18 +93,16 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         return <div className={styles.wrapper}>
             <Canvas
                 camera={{ position: [this.defaultCameraPosition[0], this.defaultCameraPosition[1], this.defaultCameraPosition[2]] }}
-                onPointerMissed={this.selectDefaultSector}
+                onPointerMissed={this.onZoomOutClick}
                 raycaster={{ filter: (intersects, state) => this.raycasterFilter(intersects, state) }}
             >
                 <ambientLight intensity={0.1} />
-                <pointLight position={[0, 0, 40]} />
+                <pointLight position={[0, 0, 40]} intensity={3} />
                 <Suspense fallback={null}>
-                {galaxy.sectors.map(sector => <SectorRender
-                    key={sector.name}
-                    sector={sector}
-                    onPlanetSelected={this.onPlanetSelected}
-                    onSectorSelected={this.onSectorSelected}
-                    onMoonSelected={this.onMoonSelected}
+                {galaxy.celestial_bodies.map((body, index) => <CelestialBodyRender
+                    key={`${body.name}-${index}`}
+                    body={body}
+                    onSelected={this.onCelestialBodySelected}
                 />)}
                 </Suspense>
                 <Stars />
@@ -165,16 +111,12 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <PlayerTracker />
             </Canvas>
             <Descriptor
-                sector={this.state.selectedSector}
-                planet={this.state.selectedPlanet}
-                moon={this.state.selectedMoon}
+                celestialBody={this.state.selectedCelestialBody}
                 onZoomOut={this.onZoomOutClick}
             />
             <Index
                 galaxy={galaxy}
-                onPlanetSelected={this.onPlanetSelected}
-                onSectorSelected={this.onSectorSelected}
-                onMoonSelected={this.onMoonSelected}
+                onCelestialBodySelected={this.onCelestialBodySelected}
             />
         </div>
     }
