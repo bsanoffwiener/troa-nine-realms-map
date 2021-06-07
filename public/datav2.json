@@ -1,9 +1,9 @@
 {
     "celestial_bodies":[
         {
-            "name":"M-5605 Nanaka",
+            "name":"M-5605 Nanaka a",
             "pve":false,
-            "definition_id":"",
+            "definition_id":"M-5605 Nanaka a",
             "radius":27498.0,
             "atmosphere_radius":48121.5,
             "x":6042373.9807174914,
@@ -73,7 +73,7 @@
         {
             "name":"P-189 Nanaka",
             "pve":true,
-            "definition_id":"",
+            "definition_id":"P-189 Nanaka",
             "radius":24999.0,
             "atmosphere_radius":43748.25,
             "x":2862815.694595071,
@@ -103,7 +103,7 @@
         {
             "name":"Hoth",
             "pve":true,
-            "definition_id":"",
+            "definition_id":"Hoth",
             "radius":29998.0,
             "atmosphere_radius":52496.5,
             "x":-6113573.8212395646,
@@ -113,7 +113,7 @@
         {
             "name":"Qun",
             "pve":false,
-            "definition_id":"",
+            "definition_id":"Qun",
             "radius":27500.5,
             "atmosphere_radius":48125.875,
             "x":-3430492.4572179033,
@@ -123,7 +123,7 @@
         {
             "name":"Mirin",
             "pve":true,
-            "definition_id":"",
+            "definition_id":"Mirin",
             "radius":25002.0,
             "atmosphere_radius":43753.5,
             "x":-2354504.6849733205,
@@ -133,7 +133,7 @@
         {
             "name":"Alglo",
             "pve":false,
-            "definition_id":"",
+            "definition_id":"Alglo",
             "radius":30000.0,
             "atmosphere_radius":52500.0,
             "x":-2312504.4121732018,
@@ -143,7 +143,7 @@
         {
             "name":"Spilskinanke",
             "pve":true,
-            "definition_id":"",
+            "definition_id":"Spilskinanke",
             "radius":29999.5,
             "atmosphere_radius":52499.125,
             "x":2547984.9470813954,
@@ -157,310 +157,308 @@
     ],
     "definitions":[
         {
-            "id":"Pertam",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Gold"
-            ],
-            "gravity":1.2,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.8,
-            "density":1,
-            "max_wind_speed":80
+          "id": "Alglo",
+          "ores": [
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Ice",
+            "Gold",
+            "Uraninite",
+            "Platinum",
+            "Trinium"
+          ],
+          "gravity": 0.15,
+          "has_atmosphere": false
         },
         {
-            "id":"Asuras",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Uraninite",
-                "Trinium",
-                "Gold"
-            ],
-            "gravity":1.5,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1
+          "id": "M-5605 Nanaka a",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Platinum",
+            "Cobalt",
+            "Magnesium",
+            "Uraninite",
+            "Trinium",
+            "Naquadah"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1
         },
         {
-            "id":"Athos",
-            "ores":[
-                "Silver",
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Magnesium",
-                "Ice",
-                "Uraninite",
-                "Naquadah",
-                "Platinum",
-                "Gold"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1.1,
-            "max_wind_speed":70
+          "id": "P-189 Nanaka",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Platinum",
+            "Cobalt",
+            "Silver",
+            "Uraninite",
+            "Gold",
+            "Naquadah"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.2,
+          "density": 1
         },
         {
-            "id":"Earth",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1,
-            "max_wind_speed":80
+          "id": "Asuras",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Uraninite",
+            "Trinium",
+            "Gold"
+          ],
+          "gravity": 1.5,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1
         },
         {
-            "id":"EarthLike",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1,
-            "max_wind_speed":80
+          "id": "Athos",
+          "ores": [
+            "Silver",
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Magnesium",
+            "Ice",
+            "Uraninite",
+            "Naquadah",
+            "Platinum",
+            "Gold"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 70
         },
         {
-            "id":"Alien",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold"
-            ],
-            "gravity":1.1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.1,
-            "density":1.2,
-            "max_wind_speed":80
+          "id": "Earth",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Ice",
+            "Gold"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
         },
         {
-            "id":"Mars",
-            "ores":[
-                "Ice",
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Gold"
-            ],
-            "gravity":0.9,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0,
-            "density":1,
-            "max_wind_speed":80
+          "id": "Halla",
+          "ores": [
+            "Iron",
+            "Naquadah",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Uraninite",
+            "Gold"
+          ],
+          "gravity": 1.8,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.4,
+          "density": 1.2
         },
         {
-            "id":"Moon",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold",
-                "Platinum"
-            ],
-            "gravity":0.25,
-            "has_atmosphere":false
+          "id": "Hoth",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Uraninite",
+            "Gold",
+            "Platinum",
+            "Trinium"
+          ],
+          "gravity": 0.25,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0,
+          "density": 0.3
         },
         {
-            "id":"Europa",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold",
-                "Platinum"
-            ],
-            "gravity":0.25,
-            "has_atmosphere":true,
-            "breathable":false,
-            "max_wind_speed":80
+          "id": "Mirin",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Uraninite",
+            "Gold",
+            "Platinum",
+            "Neutronium"
+          ],
+          "gravity": 0.4,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0,
+          "density": 0.3
         },
         {
-            "id":"Titan",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Gold",
-                "Platinum"
-            ],
-            "gravity":0.25,
-            "has_atmosphere":true,
-            "breathable":false,
-            "max_wind_speed":80
+          "id": "Orilla",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Uraninite",
+            "Ice"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1
         },
         {
-            "id":"Halla",
-            "ores":[
-                "Iron",
-                "Naquadah",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Uraninite",
-                "Gold"
-            ],
-            "gravity":1.8,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.4,
-            "density":1.2
+          "id": "Sateda",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Uraninite",
+            "Silicon",
+            "Magnesium",
+            "Cobalt",
+            "Silver",
+            "Ice"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.15,
+          "density": 1.2,
+          "max_wind_speed": 120
         },
         {
-            "id":"Orilla",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Uraninite",
-                "Ice"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1
+          "id": "Tollana",
+          "ores": [
+            "Iron",
+            "Silicon",
+            "Nickel",
+            "Silver",
+            "Magnesium",
+            "Ice",
+            "Cobalt",
+            "Gold",
+            "Neutronium"
+          ],
+          "gravity": 1.6,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.4,
+          "density": 1,
+          "max_wind_speed": 20
         },
         {
-            "id":"Sateda",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Uraninite",
-                "Silicon",
-                "Magnesium",
-                "Cobalt",
-                "Silver",
-                "Ice"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.15,
-            "density":1.2,
-            "max_wind_speed":120
+          "id": "Vorash",
+          "ores": [
+            "Ice",
+            "Olesian",
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Neutronium",
+            "Naquadah",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Platinum",
+            "Uraninite",
+            "Gold",
+            "Trinium"
+          ],
+          "gravity": 1.65,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.42,
+          "density": 1.15,
+          "max_wind_speed": 110
         },
         {
-            "id":"Tollana",
-            "ores":[
-                "Iron",
-                "Silicon",
-                "Nickel",
-                "Silver",
-                "Magnesium",
-                "Ice",
-                "Cobalt",
-                "Gold",
-                "Neutronium"
-            ],
-            "gravity":1.6,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.4,
-            "density":1,
-            "max_wind_speed":20
+          "id": "Kimi",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Magnesium",
+            "Gold",
+            "Uraninite",
+            "Platinum",
+            "Naquadah"
+          ],
+          "gravity": 0.05,
+          "has_atmosphere": false
         },
         {
-            "id":"Vorash",
-            "ores":[
-                "Ice",
-                "Olesian",
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Neutronium",
-                "Naquadah",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Platinum",
-                "Uraninite",
-                "Gold",
-                "Trinium"
-            ],
-            "gravity":1.65,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.42,
-            "density":1.15,
-            "max_wind_speed":110
+          "id": "Qun",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Ice",
+            "Magnesium",
+            "Cobalt",
+            "Silver",
+            "Gold",
+            "Platinum",
+            "Neutronium"
+          ],
+          "gravity": 0.35,
+          "has_atmosphere": false
         },
         {
-            "id":"Triton",
-            "ores":[
-                "Iron",
-                "Nickel",
-                "Silicon",
-                "Cobalt",
-                "Silver",
-                "Magnesium",
-                "Gold"
-            ],
-            "gravity":1,
-            "has_atmosphere":true,
-            "breathable":false,
-            "oxygen_density":0.9,
-            "density":1,
-            "max_wind_speed":80
+          "id": "Spilskinanke",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Magnesium",
+            "Platinum",
+            "Naquadah"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 100
         }
     ]
 }

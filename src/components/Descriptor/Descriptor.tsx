@@ -35,6 +35,16 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         </div>
     }
 
+    renderValue(label: string, value: any, suffix: string = '', toFixed: boolean = true) {
+        if (value === undefined) {
+            return <></>;
+        }
+        return <>
+            <div>{label}</div>
+            <div>{toFixed ? value.toFixed(2) : value}{suffix}</div>
+        </>;
+    }
+
     renderCelestialBody(body: ICelestialBody) {
         return <div className={styles.wrapper}>
             {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
@@ -44,10 +54,10 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             <div className={styles.grid}>
                 <div>PvP</div><div>{body.pve ? 'Not allowed' : 'Allowed'}</div>
                 {!body.definition ? '' : <>
-                    <div>Gravity</div><div>{body.definition.gravity.toFixed(2)}g</div>
-                    <div>Oxygen density</div><div>{body.definition.oxygen_density.toFixed(2)}</div>
-                    <div>Atmosphere density</div><div>{body.definition.density.toFixed(2)}</div>
-                    {body.definition.max_wind_speed ? <><div>Max wind speed</div><div>{body.definition.max_wind_speed.toFixed(2)} km/h</div></> : ''}
+                    {this.renderValue('Gravity', body.definition.gravity, 'g')}
+                    {this.renderValue('Oxygen density', body.definition.oxygen_density)}
+                    {this.renderValue('Atmosphere density', body.definition.density)}
+                    {this.renderValue('Max wind speed', body.definition.max_wind_speed, ' km/h')}
                     {this.renderPlainList('Ores', body.definition.ores)}
                 </>
                 }
