@@ -1,10 +1,10 @@
 import { IAsteroids } from "./IAsteroids";
 import { ICelestialBody } from "./ICelestialBody";
-import { IGalaxy } from "./IGalaxy";
 
 export interface ISector {
     name: string;
     pve: boolean;
+    pvp: boolean;
     planets: ICelestialBody[];
     parent?: ISector;
     asteroids: IAsteroids;

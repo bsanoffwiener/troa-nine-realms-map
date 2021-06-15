@@ -6,6 +6,7 @@ export interface ICelestialBody {
     definition?: ICelestialBodyDefinition;
     spawn: boolean;
     pve: boolean;
+    pvp: boolean;
     x: number;
     y: number;
     z: number;

@@ -1,8 +1,63 @@
 {
+    "index": [
+        {
+            "name": "Starter PvE",
+            "hierarchy": [
+                {
+                    "planet": "Earth",
+                    "moons": ["P-189 Nanaka"]
+                },
+                {
+                    "planet": "Orilla",
+                    "moons": ["Hoth"]
+                },
+                {
+                    "planet": "Sateda",
+                    "moons": ["Spilskinanke"]
+                }
+            ]
+        },
+        {
+            "name": "Starter Hardcore PvE",
+            "hierarchy": [
+                {
+                    "planet": "Athos",
+                    "moons": ["Mirin"]
+                }
+            ]
+        },
+        {
+            "name": "Starter PvP",
+            "hierarchy": [
+                {
+                    "planet": "Asuras",
+                    "moons": ["Alglo"]
+                },
+                {
+                    "planet": "Halla",
+                    "moons": ["M-5605 Nanaka a"]
+                },
+                {
+                    "planet": "Tollana",
+                    "moons": ["Qun"]
+                }
+            ]
+        },
+        {
+            "name": "Other",
+            "hierarchy": [
+                {
+                    "planet": "Vorash",
+                    "moons": []
+                }
+            ]
+        }
+    ],
     "celestial_bodies":[
         {
             "name":"M-5605 Nanaka a",
             "pve":false,
+            "pvp":true,
             "definition_id":"M-5605 Nanaka a",
             "radius":27498.0,
             "atmosphere_radius":48121.5,
@@ -13,6 +68,7 @@
         {
             "name":"Tollana",
             "pve":false,
+            "pvp":true,
             "definition_id":"Tollana",
             "radius":34998.5,
             "atmosphere_radius":61247.375,
@@ -23,6 +79,7 @@
         {
             "name":"Asuras",
             "pve":false,
+            "pvp":true,
             "definition_id":"Asuras",
             "radius":29999.0,
             "atmosphere_radius":52498.25,
@@ -33,6 +90,7 @@
         {
             "name":"Orilla",
             "pve":true,
+            "pvp":false,
             "definition_id":"Orilla",
             "radius":60000.0,
             "atmosphere_radius":105000.0,
@@ -43,6 +101,7 @@
         {
             "name":"Halla",
             "pve":false,
+            "pvp":true,
             "definition_id":"Halla",
             "radius":32498.0,
             "atmosphere_radius":56871.5,
@@ -53,6 +112,7 @@
         {
             "name":"Sateda",
             "pve":true,
+            "pvp":false,
             "definition_id":"Sateda",
             "radius":60000.0,
             "atmosphere_radius":105000.0,
@@ -63,6 +123,7 @@
         {
             "name":"Earth",
             "pve":true,
+            "pvp":false,
             "definition_id":"Earth",
             "radius":60000.0,
             "atmosphere_radius":105000.0,
@@ -73,6 +134,7 @@
         {
             "name":"P-189 Nanaka",
             "pve":true,
+            "pvp":false,
             "definition_id":"P-189 Nanaka",
             "radius":24999.0,
             "atmosphere_radius":43748.25,
@@ -82,7 +144,8 @@
         },
         {
             "name":"Vorash",
-            "pve":false,
+            "pve":true,
+            "pvp":true,
             "definition_id":"Vorash",
             "radius":60000.0,
             "atmosphere_radius":105000.0,
@@ -93,6 +156,7 @@
         {
             "name":"Athos",
             "pve":true,
+            "pvp":false,
             "definition_id":"Athos",
             "radius":60000.0,
             "atmosphere_radius":105000.0,
@@ -103,6 +167,7 @@
         {
             "name":"Hoth",
             "pve":true,
+            "pvp":false,
             "definition_id":"Hoth",
             "radius":29998.0,
             "atmosphere_radius":52496.5,
@@ -113,6 +178,7 @@
         {
             "name":"Qun",
             "pve":false,
+            "pvp":true,
             "definition_id":"Qun",
             "radius":27500.5,
             "atmosphere_radius":48125.875,
@@ -123,6 +189,7 @@
         {
             "name":"Mirin",
             "pve":true,
+            "pvp":false,
             "definition_id":"Mirin",
             "radius":25002.0,
             "atmosphere_radius":43753.5,
@@ -133,6 +200,7 @@
         {
             "name":"Alglo",
             "pve":false,
+            "pvp":true,
             "definition_id":"Alglo",
             "radius":30000.0,
             "atmosphere_radius":52500.0,
@@ -143,6 +211,7 @@
         {
             "name":"Spilskinanke",
             "pve":true,
+            "pvp":false,
             "definition_id":"Spilskinanke",
             "radius":29999.5,
             "atmosphere_radius":52499.125,
@@ -155,7 +224,7 @@
     ],
     "sectors":[
     ],
-    "definitions":[
+    "definitions": [
         {
           "id": "Alglo",
           "ores": [
@@ -222,11 +291,12 @@
             "Trinium",
             "Gold"
           ],
-          "gravity": 1.5,
+          "gravity": 1.3,
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.9,
-          "density": 1
+          "density": 1,
+          "max_wind_speed": 80
         },
         {
           "id": "Athos",
@@ -240,7 +310,6 @@
             "Ice",
             "Uraninite",
             "Naquadah",
-            "Platinum",
             "Gold"
           ],
           "gravity": 1,
@@ -259,8 +328,7 @@
             "Cobalt",
             "Silver",
             "Magnesium",
-            "Ice",
-            "Gold"
+            "Ice"
           ],
           "gravity": 1,
           "has_atmosphere": true,
@@ -277,16 +345,18 @@
             "Nickel",
             "Silicon",
             "Cobalt",
+            "Platinum",
             "Silver",
             "Magnesium",
             "Uraninite",
             "Gold"
           ],
-          "gravity": 1.8,
+          "gravity": 1.3,
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.4,
-          "density": 1.2
+          "density": 1,
+          "max_wind_speed": 140
         },
         {
           "id": "Hoth",
@@ -344,7 +414,8 @@
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.9,
-          "density": 1
+          "density": 1,
+          "max_wind_speed": 80
         },
         {
           "id": "Sateda",
@@ -378,12 +449,12 @@
             "Gold",
             "Neutronium"
           ],
-          "gravity": 1.6,
+          "gravity": 1.3,
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.4,
           "density": 1,
-          "max_wind_speed": 20
+          "max_wind_speed": 70
         },
         {
           "id": "Vorash",
@@ -403,27 +474,12 @@
             "Gold",
             "Trinium"
           ],
-          "gravity": 1.65,
+          "gravity": 1.3,
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.42,
           "density": 1.15,
           "max_wind_speed": 110
-        },
-        {
-          "id": "Kimi",
-          "ores": [
-            "Iron",
-            "Nickel",
-            "Silicon",
-            "Magnesium",
-            "Gold",
-            "Uraninite",
-            "Platinum",
-            "Naquadah"
-          ],
-          "gravity": 0.05,
-          "has_atmosphere": false
         },
         {
           "id": "Qun",
@@ -448,6 +504,7 @@
             "Iron",
             "Nickel",
             "Silicon",
+            "Gold",
             "Cobalt",
             "Magnesium",
             "Platinum",

@@ -4,3 +4,4 @@ export * from './ICelestialBody';
 export * from './ISector';
 export * from './IGalaxy';
 export * from './ITrackedPlayer';
+export * from './IIndex';

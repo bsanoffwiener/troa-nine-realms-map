@@ -37,7 +37,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
             name="Planet"
             position={[props.body.x / scaleDivider, props.body.y / scaleDivider, props.body.z / scaleDivider]}
             visible
-            scale={props.body.radius / scaleDivider}
+            scale={(props.body.radius / scaleDivider) * 1.1}
             onClick={(event) => { event.stopPropagation(); props.onSelected(props.body)}}
             geometry={geometry}
         >
@@ -58,7 +58,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
             renderOrder={10}
             position={[props.body.x / scaleDivider, props.body.y / scaleDivider, props.body.z / scaleDivider]}
             visible
-            scale={(props.body.atmosphere_radius / scaleDivider)}
+            scale={(props.body.atmosphere_radius / scaleDivider) * 0.8}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial

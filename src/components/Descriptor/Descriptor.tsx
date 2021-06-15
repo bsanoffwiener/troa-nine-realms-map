@@ -28,8 +28,9 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         return <div className={styles.wrapper}>
             <div className={styles.title}>{sector.name}</div>
             {sector.description ? <div className={styles.description}>{sector.description}</div> : ''}
+            {this.renderPlayerEnvironment(sector.pvp, sector.pve)}
             <div className={styles.grid}>
-                <div>PvP</div><div>{sector.pve ? 'Not allowed' : 'Allowed'}</div>
+                {/* <div>PvP</div><div>{sector.pve ? 'Not allowed' : 'Allowed'}</div> */}
                 {this.renderPlainList('Ores in asteroids', sector.asteroids.ores)}
             </div>
         </div>
@@ -45,14 +46,25 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         </>;
     }
 
+    renderPlayerEnvironment(pvp: boolean, pve: boolean) {
+        if (pvp && pve) {
+            return <div className={styles.pvpve}>This is a PvPvE area</div>;
+        }
+        if (pvp) {
+            return <div className={styles.pvp}>This is a PvP area</div>;
+        }
+        return <div className={styles.pve}>This is a PvE area</div>;
+    }
+
     renderCelestialBody(body: ICelestialBody) {
         return <div className={styles.wrapper}>
             {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
             <div className={styles.title}>{body.name}</div>
             {/* {planet.spawn ? <div className={styles.spawn}>This is a starter planet of {planet.parent.name} sector</div> : ''} */}
+            {this.renderPlayerEnvironment(body.pvp, body.pve)}
             {body.description ? <div className={styles.description}>{body.description}</div> : ''}
             <div className={styles.grid}>
-                <div>PvP</div><div>{body.pve ? 'Not allowed' : 'Allowed'}</div>
+                {/* <div>PvP</div><div>{body.pve ? 'Not allowed' : 'Allowed'}</div> */}
                 {!body.definition ? '' : <>
                     {this.renderValue('Gravity', body.definition.gravity, 'g')}
                     {this.renderValue('Oxygen density', body.definition.oxygen_density)}
@@ -76,7 +88,8 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         } else {
             return this.renderDeepSpace({
                 name: 'Deep Space',
-                pve: false,
+                pve: true,
+                pvp: true,
                 asteroids: {
                     ores: ["Everything"]
                 },

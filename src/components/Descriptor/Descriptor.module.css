@@ -61,3 +61,19 @@
     font-size: 14px;
     /* font-style: italic; */
 }
+
+.pve, .pvp, .pvpve {
+    margin-top: 8px;
+}
+
+.pve {
+    color: #22CC22;
+}
+
+.pvpve {
+    color: #e78d27;
+}
+
+.pvp {
+    color: #CC2222;
+}

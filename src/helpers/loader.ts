@@ -2,6 +2,7 @@ import { IGalaxy } from "../models/IGalaxy";
 
 export async function loadGalaxy(url: string): Promise<IGalaxy> {
     let emptyGalaxy: IGalaxy = {
+        index: [],
         celestial_bodies: [],
         sectors: [],
         definitions: []
