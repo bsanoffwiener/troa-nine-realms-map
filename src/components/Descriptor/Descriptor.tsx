@@ -57,6 +57,7 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
     }
 
     renderCelestialBody(body: ICelestialBody) {
+        const gps =  `GPS:${body.name}:${body.x}:${body.y}:${body.z}:#ADD8E6:`;
         return <div className={styles.wrapper}>
             {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
             <div className={styles.title}>{body.name}</div>
@@ -77,6 +78,9 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             <div className={styles.buttons}>
                 <GPS coords={[body.x, body.y, body.z]} name={body.name} color="#ADD8E6" />
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
+            </div>
+            <div className={styles.input}>
+                <input type="text" value={gps} />
             </div>
         </div>
     }
