@@ -1,5 +1,4 @@
 import React from 'react';
-import { SEButton } from '..';
 import { ICelestialBody, IGalaxy, IIndex } from '../../models';
 
 import styles from './Index.module.css';
@@ -10,10 +9,6 @@ interface IIndexProps {
 }
 
 export default class Index extends React.Component<IIndexProps> {
-
-    constructor(props: IIndexProps) {
-        super(props);
-    }
 
     renderList(list: string[]) {
         if (!list || list.length === 0) {
