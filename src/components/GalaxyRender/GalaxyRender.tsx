@@ -5,10 +5,11 @@ import { Vector3, Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
 import { ICelestialBody, IGalaxy } from '../../models';
-import { CelestialBodyRender, Descriptor, Index, PlayerTracker, Stars, Zoomer } from '..';
+import { CelestialBodyRender, Descriptor, Index, PlayerTracker, Stars, Zoomer, OreMap } from '..';
 
 import styles from './GalaxyRender.module.css';
 import { scaleDivider } from "../../helpers/scale";
+import SEButton from "../SEButton/SEButton";
 
 extend({ OrbitControls });
 
@@ -28,6 +29,8 @@ interface IGalaxyRenderState {
     selectedCelestialBody?: ICelestialBody;
     cameraTargetPos: number[];
     cameraLookAtPos: number[];
+    oreMapVisible: boolean;
+    indexVisible: boolean;
 }
 
 interface ICameraControlsProps {
@@ -53,7 +56,10 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
 
     constructor(props: IGalaxyRenderProps) {
         super(props);
+        const urlSearchParams = new URLSearchParams(window.location.search);
         this.state = {
+            indexVisible: localStorage ? localStorage.getItem('index_visible') === "true" : true,
+            oreMapVisible: urlSearchParams.get('ores') !== null,
             selectedCelestialBody: undefined,
             cameraTargetPos: this.defaultCameraPosition,
             cameraLookAtPos: this.defaultCameraLookAtPosition
@@ -87,9 +93,25 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         return intersects;
     }
 
+    onOreMapClose = () => {
+        this.setState({ oreMapVisible: false });
+    }
+
+    onOreMapOpen = () => {
+        this.setState({ oreMapVisible: true });
+    }
+
+    onToggleIndex = () => {
+        const newVisibleState = !this.state.indexVisible;
+        this.setState({indexVisible: newVisibleState});
+        if (localStorage) {
+            localStorage.setItem('index_visible', newVisibleState ? 'true' : 'false');
+        }
+    }
+
     render(): JSX.Element {
         const { galaxy } = this.props;
-        const { cameraTargetPos, cameraLookAtPos } = this.state;
+        const { cameraTargetPos, cameraLookAtPos, oreMapVisible, indexVisible } = this.state;
         return <div className={styles.wrapper}>
             <Canvas
                 camera={{ position: [this.defaultCameraPosition[0], this.defaultCameraPosition[1], this.defaultCameraPosition[2]] }}
@@ -114,10 +136,15 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 celestialBody={this.state.selectedCelestialBody}
                 onZoomOut={this.onZoomOutClick}
             />
-            <Index
+            {oreMapVisible ? <OreMap galaxy={galaxy} onClose={this.onOreMapClose} /> : ''}
+            {indexVisible ? <Index
                 galaxy={galaxy}
                 onCelestialBodySelected={this.onCelestialBodySelected}
-            />
+            /> : ''}
+            <div className={styles.bottompanel}>
+                <SEButton label={indexVisible ? "Hide Index" : "Show Index"} onClick={this.onToggleIndex} />
+                <SEButton label="Show ore Map" onClick={this.onOreMapOpen} />
+            </div>
         </div>
     }
 }

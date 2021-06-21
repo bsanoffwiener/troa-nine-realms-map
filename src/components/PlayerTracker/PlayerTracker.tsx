@@ -74,6 +74,7 @@ export default class PlayerTracker extends React.Component<{}, IPlayerTrackerSta
                 <mesh
                     position={[player.X / scaleDivider, player.Y / scaleDivider, player.Z / scaleDivider]}
                     visible
+                    scale={0.2}
                 >
                     <textGeometry attach='geometry' args={[player.Name, textOptions]} />
                     <meshStandardMaterial attach='material' />

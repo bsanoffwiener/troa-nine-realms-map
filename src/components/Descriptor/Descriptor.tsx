@@ -56,8 +56,17 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         return <div className={styles.pve}>This is a PvE area</div>;
     }
 
+    getColorForCelestialBody(pvp: boolean, pve: boolean): string {
+        if (pvp && pve) {
+            return '#e78d27';
+        }
+        if (pvp) {
+            return '#CC2222';
+        }
+        return '#22CC22';
+    }
+
     renderCelestialBody(body: ICelestialBody) {
-        const gps =  `GPS:${body.name}:${body.x}:${body.y}:${body.z}:#ADD8E6:`;
         return <div className={styles.wrapper}>
             {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
             <div className={styles.title}>{body.name}</div>
@@ -76,11 +85,8 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
                 }
             </div>
             <div className={styles.buttons}>
-                <GPS coords={[body.x, body.y, body.z]} name={body.name} color="#ADD8E6" />
+                <GPS coords={[body.x, body.y, body.z]} name={body.name} color={this.getColorForCelestialBody(body.pvp, body.pve)} />
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
-            </div>
-            <div className={styles.input}>
-                <input type="text" value={gps} />
             </div>
         </div>
     }

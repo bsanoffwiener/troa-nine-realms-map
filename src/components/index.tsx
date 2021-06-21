@@ -10,3 +10,4 @@ export { default as CelestialBodyRender } from './CelestialBodyRender/CelestialB
 export { default as TextRender } from './TextRender/TextRender';
 export { default as Stars } from './Stars/Stars';
 export { default as Zoomer } from './Zoomer/Zoomer';
+export { default as OreMap } from './OreMap/OreMap';

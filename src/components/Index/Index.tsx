@@ -9,17 +9,10 @@ interface IIndexProps {
     onCelestialBodySelected: (data: ICelestialBody) => void;
 }
 
-interface IIndexState {
-    visible: boolean;
-}
-
-export default class Index extends React.Component<IIndexProps, IIndexState> {
+export default class Index extends React.Component<IIndexProps> {
 
     constructor(props: IIndexProps) {
         super(props);
-        this.state = {
-            visible: localStorage ? localStorage.getItem('index_visible') === "true" : true
-        }
     }
 
     renderList(list: string[]) {
@@ -32,14 +25,6 @@ export default class Index extends React.Component<IIndexProps, IIndexState> {
                 {list.map(item => <li key={item}>{item}</li>)}
             </ul>
         </>);
-    }
-
-    toggleIndex = () => {
-        const newVisibleState = !this.state.visible;
-        this.setState({visible: newVisibleState});
-        if (localStorage) {
-            localStorage.setItem('index_visible', newVisibleState ? 'true' : 'false');
-        }
     }
 
     onIndexClick = (name: string) => {
@@ -91,11 +76,9 @@ export default class Index extends React.Component<IIndexProps, IIndexState> {
 
     render() {
         const { galaxy } = this.props;
-        const { visible } = this.state;
         return <div className={styles.wrapper}>
             <div className={styles.title}>Map index</div>
-            <SEButton label={visible ? 'Hide' : 'Show'} onClick={this.toggleIndex} />
-            {visible ? this.renderIndex(galaxy) : ''}
+            {this.renderIndex(galaxy)}
         </div>;
     }
 }

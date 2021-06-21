@@ -77,15 +77,3 @@
 .pvp {
     color: #CC2222;
 }
-
-.input {
-    text-align: center;
-}
-
-.input input {
-    width: 90%;
-    background-color: #222;
-    color: #D0E8EF;
-    border: 1px solid #5C757C;
-    padding: 4px 8px;
-}
