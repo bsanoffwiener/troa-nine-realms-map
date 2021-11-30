@@ -351,7 +351,7 @@
             "Uraninite",
             "Gold"
           ],
-          "gravity": 1.3,
+          "gravity": 1.8,
           "has_atmosphere": true,
           "breathable": false,
           "oxygen_density": 0.4,

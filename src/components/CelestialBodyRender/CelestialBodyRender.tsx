@@ -46,8 +46,8 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 flatShading={false}
                 attach="material"
                 displacementMap={heightMap}
-                displacementScale={0.05}
-                displacementBias={0.0}
+                displacementScale={0.2}
+                displacementBias={-0.2}
                 map={colorMap}
             />
         </mesh>
@@ -58,7 +58,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
             renderOrder={10}
             position={[props.body.x / scaleDivider, props.body.y / scaleDivider, props.body.z / scaleDivider]}
             visible
-            scale={(props.body.atmosphere_radius / scaleDivider) * 0.8}
+            scale={(props.body.atmosphere_radius / scaleDivider) * 0.6}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <meshStandardMaterial
