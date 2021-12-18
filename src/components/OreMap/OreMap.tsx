@@ -29,7 +29,8 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
         "Trinium",
         "Naquadah",
         "Neutronium",
-        "Olesian"
+        "Olesian",
+        "Maclarium"
     ];
 
     const renameMap: IMap = {
@@ -41,7 +42,12 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
         "Silver": "Ag",
         "Gold": "Au",
         "Platinum": "Pt",
-        "Uraninite": "U"
+        "Uraninite": "U",
+        "Trinium": "Ki",
+        "Neutronium": "Nt",
+        "Naquadah": "Nq",
+        "Olesian": "Ol",
+        "Maclarium": "Mc"
     }
 
     let celestialBodies: string[] = [];
@@ -53,8 +59,12 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
     });
 
     const hasOre = (bodyName: string, oreName: string) => {
-        const foundBody = props.galaxy.definitions.find(definition => definition.id === bodyName);
-        if (!foundBody || !foundBody.ores.includes(oreName)) {
+        const foundBody = props.galaxy.celestial_bodies.find(body => body.name === bodyName);
+        if (!foundBody) {
+            return <></>;
+        }
+        const foundDefition = props.galaxy.definitions.find(definition => definition.id === foundBody.definition_id);
+        if (!foundDefition || !foundDefition.ores.includes(oreName)) {
             return <></>;
         }
         return <span>+</span>;
@@ -63,7 +73,15 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
     const renderRow = (bodyName: string, oreOrder: string[]) => {
         return <tr key={bodyName}>
             <td>{bodyName}</td>
-            {oreOrder.map(ore => <td className={styles.center} key={`${bodyName}-${ore}`}>{hasOre(bodyName, ore)}</td>)}
+            {oreOrder.map(ore => {
+                if (ore === "Platinum") {
+                    return <td className={styles.center} key={`${bodyName}-nosurvey`} colSpan={7}>No survey data available</td>
+                } else if (["Uraninite","Trinium","Naquadah","Neutronium","Olesian","Maclarium"].includes(ore)) {
+                    return <></>;
+                }
+                return <td className={styles.center} key={`${bodyName}-${ore}`}>{hasOre(bodyName, ore)}</td>
+            })
+            }
         </tr>;
     }
 

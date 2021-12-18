@@ -1,0 +1,415 @@
+{
+    "index": [
+        {
+            "name": "PvE",
+            "hierarchy": [
+                {
+                    "planet": "EarthLike",
+                    "moons": ["Onseem"]
+                },
+                {
+                    "planet": "New Glain",
+                    "moons": ["Edfu"]
+                },
+                {
+                    "planet": "Asuras",
+                    "moons": ["Dja'Net"]
+                },
+
+                {
+                    "planet": "Kaliam",
+                    "moons": ["Small Deril", "Big Deril"]
+                }
+            ]
+        },
+        {
+            "name": "PvP",
+            "hierarchy": [
+                {
+                    "planet": "Aquaras",
+                    "moons": ["Halla"]
+                },
+                {
+                    "planet": "Vorash",
+                    "moons": ["Tollana"]
+                }
+            ]
+        }
+    ],
+    "celestial_bodies":[
+        {
+           "name":"Aquaras",
+           "pve":false,
+           "pvp":true,
+           "definition_id":"Aquaras",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":-2441311.7533138525,
+           "y":-4236914.026099056,
+           "z":-530727.81249823433
+        },
+        {
+           "name":"Halla",
+           "pve":false,
+           "pvp":true,
+           "definition_id":"Halla",
+           "radius":35002.0,
+           "atmosphere_radius":61253.5,
+           "x":-2683433.7975637768,
+           "y":-4251325.0150554711,
+           "z":-585626.12301766372
+        },
+        {
+           "name":"Asuras",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Asuras",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":2490155.6917407978,
+           "y":2252655.6900094221,
+           "z":1659903.6638500388
+        },
+        {
+           "name":"Tollana",
+           "pve":false,
+           "pvp":true,
+           "definition_id":"Tollana",
+           "radius":35002.0,
+           "atmosphere_radius":61253.5,
+           "x":-548783.6180605843,
+           "y":-4725729.3522685971,
+           "z":800686.69219889329
+        },
+        {
+           "name":"Dja'Net",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Dja'Net",
+           "radius":34998.0,
+           "atmosphere_radius":61246.5,
+           "x":2533391.9081860809,
+           "y":2527780.6267473195,
+           "z":1624176.6964768553
+        },
+        {
+           "name":"New Glain",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"New Glain",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":-580770.82543862471,
+           "y":3985129.2272415017,
+           "z":294355.77661602333
+        },
+        {
+           "name":"Vorash",
+           "pve":false,
+           "pvp":true,
+           "definition_id":"Vorash",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":-782785.32637523941,
+           "y":-4964627.9780318318,
+           "z":776444.76232847688
+        },
+        {
+           "name":"Edfu",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Edfu",
+           "radius":35001.5,
+           "atmosphere_radius":61252.625,
+           "x":-699075.80844715342,
+           "y":4172568.4955809386,
+           "z":264533.3803776672
+        },
+        {
+           "name":"EarthLike",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"EarthLike",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":-3331077.2459136252,
+           "y":3032054.025888124,
+           "z":-1693491.3455629963
+        },
+        {
+           "name":"Kaliam",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Kaliam",
+           "radius":60000.0,
+           "atmosphere_radius":105000.0,
+           "x":-4428301.1280699568,
+           "y":-1510822.708942771,
+           "z":-1571793.1843223742
+        },
+        {
+           "name":"Big Deril",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Deril",
+           "radius":22502.0,
+           "atmosphere_radius":39378.5,
+           "x":-4592082.8867680961,
+           "y":-1688933.2205156896,
+           "z":-1631711.5970761292
+        },
+        {
+           "name":"Small Deril",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Deril",
+           "radius":13021.0,
+           "atmosphere_radius":22786.75,
+           "x":-4490445.70407676,
+           "y":-1276546.6283672042,
+           "z":-1571126.9463959173
+        },
+        {
+           "name":"Onseem",
+           "pve":true,
+           "pvp":false,
+           "definition_id":"Onseem",
+           "radius":37500.5,
+           "atmosphere_radius":65625.875,
+           "x":-3319634.8270636611,
+           "y":3302239.2820778782,
+           "z":-1538898.4664674378
+        }
+    ],
+    "pois":[
+    ],
+    "sectors":[
+    ],
+    "definitions": [
+        {
+          "id": "Aquaras",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 60
+        },
+        {
+          "id": "EarthLike",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Ice"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Deril",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Ice",
+            "Gold"
+          ],
+          "gravity": 0.15,
+          "has_atmosphere": false
+        },
+        {
+          "id": "Dja'Net",
+          "ores": [
+            "Iron",
+            "Gold",
+            "Nickel",
+            "?"
+          ],
+          "gravity": 0.3,
+          "has_atmosphere": true
+        },
+        {
+          "id": "Edfu",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "?",
+            "Silver",
+            "Magnesium",
+            "Ice",
+            "Gold"
+          ],
+          "gravity": 1.2,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.5,
+          "density": 1,
+          "max_wind_speed": 120
+        },
+        {
+          "id": "Halla",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Gold"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Netu",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "?",
+            "Silver",
+            "Magnesium",
+            "Gold"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 245
+        },
+        {
+          "id": "Onseem",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Ice",
+            "Gold"
+          ],
+          "gravity": 0.95,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 1.2,
+          "density": 0.8,
+          "max_wind_speed": 90
+        },
+        {
+          "id": "Kaliam",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Ice"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.4,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "New Glain",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium",
+            "Ice"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 95
+        },
+        {
+          "id": "Asuras",
+          "ores": [
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium"
+          ],
+          "gravity": 1.3,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Vorash",
+          "ores": [
+            "Ice",
+            "Iron",
+            "Nickel",
+            "Silicon",
+            "Cobalt",
+            "Silver",
+            "Magnesium"
+          ],
+          "gravity": 1.3,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.42,
+          "density": 1.15,
+          "max_wind_speed": 110
+        },
+        {
+          "id": "Tollana",
+          "ores": [
+            "Iron",
+            "Silicon",
+            "?",
+            "Nickel",
+            "Magnesium",
+            "Silver",
+            "Gold"
+          ],
+          "gravity": 0.5,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.4,
+          "density": 1,
+          "max_wind_speed": 20
+        }
+    ]
+}

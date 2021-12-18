@@ -46,8 +46,8 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 flatShading={false}
                 attach="material"
                 displacementMap={heightMap}
-                displacementScale={0.2}
-                displacementBias={-0.2}
+                displacementScale={0.1}
+                displacementBias={-0.1}
                 map={colorMap}
             />
         </mesh>
