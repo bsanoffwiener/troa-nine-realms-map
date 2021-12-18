@@ -130,7 +130,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Stars />
                 <CameraControls target={cameraLookAtPos}  />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
-                <PlayerTracker />
+                {/* <PlayerTracker /> */}
             </Canvas>
             <Descriptor
                 celestialBody={this.state.selectedCelestialBody}
