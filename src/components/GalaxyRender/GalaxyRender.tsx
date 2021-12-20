@@ -5,7 +5,7 @@ import { Vector3, Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
 import { ICelestialBody, IGalaxy } from '../../models';
-import { CelestialBodyRender, Descriptor, Index, PlayerTracker, Stars, Zoomer, OreMap } from '..';
+import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap } from '..';
 
 import styles from './GalaxyRender.module.css';
 import { scaleDivider } from "../../helpers/scale";
