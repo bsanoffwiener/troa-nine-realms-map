@@ -1,18 +1,21 @@
 import React from 'react';
-import { ICelestialBody, IGalaxy, IIndex } from '../../models';
+import { ICelestialBody, IGalaxy, IIndex, ITrackedGrid, ITrackedPlayer } from '../../models';
 
 import styles from './Index.module.css';
 
 interface IIndexProps {
     galaxy: IGalaxy;
+    players: ITrackedPlayer[];
+    grids: ITrackedGrid[];
     onCelestialBodySelected: (data: ICelestialBody) => void;
+    onGridSelected: (data: ITrackedGrid) => void;
 }
 
 export default class Index extends React.Component<IIndexProps> {
 
     renderList(list: string[]) {
         if (!list || list.length === 0) {
-            return;
+            return <></>;
         }
         list.sort((a, b) => a.localeCompare(b));
         return (<>
@@ -27,6 +30,10 @@ export default class Index extends React.Component<IIndexProps> {
         if (celestialBodyClicked) {
             this.props.onCelestialBodySelected(celestialBodyClicked);
         }
+    }
+
+    onGridClick = (grid: ITrackedGrid) => {
+        this.props.onGridSelected(grid);
     }
 
     renderHierarchy(indexEntry: IIndex): JSX.Element {
@@ -69,11 +76,49 @@ export default class Index extends React.Component<IIndexProps> {
         </>
     }
 
+    renderGrids(grids: ITrackedGrid[]) {
+        if (grids.length === 0) {
+            return <></>
+        }
+
+        return <>
+            <div className={styles.title}>Grids</div>
+            <ul className={styles.list}>
+            {grids.map(grid => {
+            return (
+                <li key={grid.EntityId}>
+                    <span onClick={() => this.onGridClick(grid)}>{grid.Name}</span>
+                </li>);
+            })}
+            </ul>
+        </>
+    }
+
+    renderPlayers(players: ITrackedPlayer[]) {
+        if (players.length === 0) {
+            return <></>
+        }
+        players.sort((a, b) => a.Name.localeCompare(b.Name));
+        return <>
+            <div className={styles.title}>Players</div>
+            <ul className={styles.list}>
+            {players.map(player => {
+            return (
+                <li key={player.Name}>
+                    {player.Name}
+                </li>);
+            })}
+            </ul>
+        </>
+    }
+
     render() {
-        const { galaxy } = this.props;
+        const { galaxy, grids } = this.props;
         return <div className={styles.wrapper}>
             <div className={styles.title}>Map index</div>
             {this.renderIndex(galaxy)}
+            {this.renderGrids(grids)}
+            {/* {this.renderPlayers(players)} */}
         </div>;
     }
 }

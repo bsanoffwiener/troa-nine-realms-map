@@ -4,8 +4,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Vector3, Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
-import { ICelestialBody, IGalaxy } from '../../models';
-import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap } from '..';
+import { ICelestialBody, IGalaxy, ITrackedGrid, ITrackedPlayer } from '../../models';
+import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap, PlayerTracker, GridTracker } from '..';
 
 import styles from './GalaxyRender.module.css';
 import { scaleDivider } from "../../helpers/scale";
@@ -27,10 +27,13 @@ interface IGalaxyRenderProps {
 
 interface IGalaxyRenderState {
     selectedCelestialBody?: ICelestialBody;
+    selectedGrid?: ITrackedGrid;
     cameraTargetPos: number[];
     cameraLookAtPos: number[];
     oreMapVisible: boolean;
     indexVisible: boolean;
+    players: ITrackedPlayer[];
+    grids: ITrackedGrid[];
 }
 
 interface ICameraControlsProps {
@@ -51,6 +54,7 @@ const CameraControls: React.FC<ICameraControlsProps> = (props: ICameraControlsPr
 
 export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IGalaxyRenderState> {
 
+    private intervalId?: NodeJS.Timeout;
     private defaultCameraPosition = [0, 0, 60];
     private defaultCameraLookAtPosition = [0, 0, 0];
 
@@ -62,21 +66,54 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
             oreMapVisible: urlSearchParams.get('ores') !== null,
             selectedCelestialBody: undefined,
             cameraTargetPos: this.defaultCameraPosition,
-            cameraLookAtPos: this.defaultCameraLookAtPosition
+            cameraLookAtPos: this.defaultCameraLookAtPosition,
+            players: [],
+            grids: [],
         };
+    }
+
+    componentDidMount() {
+        this.intervalId = setInterval(() => this.doTick(), 60000);
+        this.doTick();
+    }
+
+    componentWillUnmount() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+    }
+
+    private async doTick() {
+        const response = await fetch('https://sg-tracker.infcore.net/data/get');
+        const data: {
+            players: ITrackedPlayer[];
+            grids: ITrackedGrid[];
+        } = await response.json();
+        this.setState(data);
     }
 
     onCelestialBodySelected = (data: ICelestialBody) => {
         this.setState({
             selectedCelestialBody: data,
+            selectedGrid: undefined,
             cameraTargetPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider + 1],
             cameraLookAtPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider],
+        });
+    }
+
+    onGridSelected = (data: ITrackedGrid) => {
+        this.setState({
+            selectedCelestialBody: undefined,
+            selectedGrid: data,
+            cameraTargetPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider + 1],
+            cameraLookAtPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider],
         });
     }
 
     onZoomOutClick = () => {
         this.setState({
             selectedCelestialBody: undefined,
+            selectedGrid: undefined,
             cameraTargetPos: this.defaultCameraPosition,
             cameraLookAtPos: this.defaultCameraLookAtPosition
         });
@@ -130,16 +167,21 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Stars />
                 <CameraControls target={cameraLookAtPos}  />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
-                {/* <PlayerTracker /> */}
+                <PlayerTracker players={this.state.players} />
+                <GridTracker grids={this.state.grids} />
             </Canvas>
             <Descriptor
                 celestialBody={this.state.selectedCelestialBody}
+                grid={this.state.selectedGrid}
                 onZoomOut={this.onZoomOutClick}
             />
             {oreMapVisible ? <OreMap galaxy={galaxy} onClose={this.onOreMapClose} /> : ''}
             {indexVisible ? <Index
                 galaxy={galaxy}
+                players={this.state.players}
+                grids={this.state.grids}
                 onCelestialBodySelected={this.onCelestialBodySelected}
+                onGridSelected={this.onGridSelected}
             /> : ''}
             <div className={styles.bottompanel}>
                 <SEButton label={indexVisible ? "Hide Index" : "Show Index"} onClick={this.onToggleIndex} />

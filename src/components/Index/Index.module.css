@@ -6,10 +6,11 @@
     background-color: rgba(26, 34, 40, 0.7);
     border: 1px solid #5C757C;
     font-family: 'Oxanium';
-    width: 160px;
+    width: 180px;
     font-size: 14px;
     /* max-height: 400px; */
     overflow: auto;
+    max-height: 70%;
 }
 
 .title {
@@ -30,6 +31,9 @@
 
 .list > li {
     padding-bottom: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .list ul {

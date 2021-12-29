@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { ICelestialBody } from '../../models';
 import { scaleDivider } from "../../helpers/scale";
 import TextRender from "../TextRender/TextRender";
+import { bodyColor } from "../../helpers/color";
 
 interface ICelestialBodyProps {
     body: ICelestialBody;
@@ -69,7 +70,8 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
                 map={cloudMap}
             />
         </mesh>}
-        <TextRender label={props.body.name} x={props.body.x} y={props.body.y + props.body.atmosphere_radius} z={props.body.z} />
+
+        <TextRender label={props.body.name} x={props.body.x} y={props.body.y + props.body.atmosphere_radius} z={props.body.z} color={bodyColor(props.body)} />
     </group>;
 }
 

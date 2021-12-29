@@ -1,84 +1,35 @@
 import React from "react";
-import { extend, ReactThreeFiber } from '@react-three/fiber';
-import * as THREE from 'three';
 
 import { ITrackedPlayer } from '../../models';
-import Oxanium from './Oxanium_Regular.json';
 import { scaleDivider } from "../../helpers/scale";
+import { TextRender } from "..";
+import { TextSize } from "../TextRender/TextRender";
 
-// import styles from './PlayerTracker.module.css';
-
-extend({ Text });
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            textRender: ReactThreeFiber.Object3DNode<Text, typeof Text>
-        }
-    }
-}
-
-interface IPlayerTrackerState {
+interface IPlayerTrackerProps {
     players: ITrackedPlayer[];
 }
 
-export default class PlayerTracker extends React.Component<{}, IPlayerTrackerState> {
+export default class PlayerTracker extends React.Component<IPlayerTrackerProps> {
 
-    private font = new THREE.FontLoader().parse(Oxanium);
-    private intervalId?: NodeJS.Timeout;
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            players: []
-        };
-    }
-
-    componentDidMount() {
-        this.intervalId = setInterval(() => this.doTick(), 30000);
-        this.doTick();
-    }
-
-    componentWillUnmount() {
-        if (this.intervalId) {
-            clearInterval(this.intervalId);
-        }
-    }
-
-    private async doTick() {
-        const response = await fetch('https://sg-tracker.infcore.net/data/get');
-        const data: ITrackedPlayer[] = await response.json();
-        this.setState({ players: data });
-    }
-
-    render(): JSX.Element {
-        const textOptions = {
-            font: this.font,
-            size: 0.1,
-            height: 0.01
-        };
-        const { players } = this.state;
+   render(): JSX.Element {
+        const { players } = this.props;
         return <>
             {players.map(player => <group key={player.Name}>
                 <mesh
                     position={[player.X / scaleDivider, player.Y / scaleDivider, player.Z / scaleDivider]}
                     visible
-                    scale={0.01}
+                    scale={0.005}
                 >
                     <sphereBufferGeometry args={[1, 32, 32]} />
                     <meshStandardMaterial
                         flatShading={false}
                         attach="material"
+                        opacity={0.5}
+                        transparent={true}
+                        color={"blue"}
                     />
                 </mesh>
-                <mesh
-                    position={[player.X / scaleDivider, player.Y / scaleDivider, player.Z / scaleDivider]}
-                    visible
-                    scale={0.2}
-                >
-                    <textGeometry attach='geometry' args={[player.Name, textOptions]} />
-                    <meshStandardMaterial attach='material' />
-                </mesh>
+                <TextRender label={player.Name} x={player.X} y={player.Y} z={player.Z} size={TextSize.Player} color={"blue"} />
                 </group>
             )}
         </>
