@@ -124,8 +124,9 @@ const EventView: React.FC<IEventViewProps> = (props) => {
                     <meshStandardMaterial
                         flatShading={false}
                         attach="material"
-                        opacity={1}
+                        opacity={0.5}
                         color={"white"}
+                        transparent={true}
                     />
                 </mesh>
             </group>
