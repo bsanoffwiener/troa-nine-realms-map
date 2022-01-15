@@ -118,7 +118,7 @@ const EventView: React.FC<IEventViewProps> = (props) => {
                 <mesh
                     position={[grid.X / scaleDivider, grid.Y / scaleDivider, grid.Z / scaleDivider]}
                     visible
-                    scale={0.1}
+                    scale={0.02}
                 >
                     <sphereBufferGeometry args={[1, 32, 32]} />
                     <meshStandardMaterial
