@@ -70,7 +70,7 @@ const uniqueFactions = (players: ITrackedPlayer[]) => {
 
 const factionColor: { [key: string]: string; } = {
     "[EVENT] The Asgards": "#0000FF",
-    "[EVENT] Goa'uld": "#FF0000",
+    "[EVENT] The Goa`uld": "#FF0000",
 };
 
 const EventView: React.FC<IEventViewProps> = (props) => {
