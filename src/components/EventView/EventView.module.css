@@ -1,0 +1,24 @@
+.wrapper {
+    padding: 10px;
+    position: absolute;
+    bottom: 56px;
+    right: 16px;
+    left: 16px;
+    background-color: rgba(26, 34, 40, 0.7);
+    border: 1px solid #5C757C;
+    border: 1px solid #5C757C;
+    font-family: 'Oxanium';
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.faction {
+    font-size: 12pt;
+}
+
+.members {
+    font-size: 10pt;
+    text-align: center;
+}
