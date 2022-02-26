@@ -8,6 +8,8 @@
     border: 1px solid #5C757C;
     font-family: 'Oxanium';
     width: 360px;
+    max-height: 80%;
+    overflow: auto;
 }
 
 .title {

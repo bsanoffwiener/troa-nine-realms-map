@@ -15,10 +15,13 @@
                     "planet": "Asuras",
                     "moons": ["Dja'Net"]
                 },
-
                 {
                     "planet": "Kaliam",
                     "moons": ["Small Deril", "Big Deril"]
+                },
+                {
+                    "planet": "Netu",
+                    "moons": []
                 }
             ]
         },
@@ -179,6 +182,17 @@
            "x":-3319634.8270636611,
            "y":3302239.2820778782,
            "z":-1538898.4664674378
+        },
+        {
+            "name":"Netu",
+            "pve":true,
+            "pvp":false,
+            "definition_id":"Netu",
+            "radius":60000.0,
+            "atmosphere_radius":105000.0,
+            "x":3015256.0324444082,
+            "y":53580.619403288372,
+            "z":2564592.6512662289
         }
     ],
     "pois":[
@@ -241,7 +255,7 @@
             "Iron",
             "Gold",
             "Nickel",
-            "?"
+            "Naquadah"
           ],
           "gravity": 0.3,
           "has_atmosphere": true
@@ -253,11 +267,12 @@
             "Nickel",
             "Silicon",
             "Cobalt",
-            "?",
+            "Trinium",
             "Silver",
             "Magnesium",
             "Ice",
-            "Gold"
+            "Gold",
+            "Platinum"
           ],
           "gravity": 1.2,
           "has_atmosphere": true,
@@ -291,9 +306,14 @@
             "Nickel",
             "Silicon",
             "Cobalt",
-            "?",
+            "Olesian",
+            "Maclarium",
             "Silver",
+            "Naquadah",
+            "Neutronium",
             "Magnesium",
+            "DenseMaclarium",
+            "Trinium",
             "Gold"
           ],
           "gravity": 1,
@@ -361,7 +381,6 @@
         {
           "id": "Asuras",
           "ores": [
-            "Ice",
             "Iron",
             "Nickel",
             "Silicon",
@@ -399,11 +418,17 @@
           "ores": [
             "Iron",
             "Silicon",
-            "?",
+            "Olesian",
             "Nickel",
+            "Neutronium",
             "Magnesium",
             "Silver",
-            "Gold"
+            "Platinum",
+            "Gold",
+            "Trinium",
+            "Maclarium",
+            "Naquadah",
+            "DenseMaclarium"
           ],
           "gravity": 0.5,
           "has_atmosphere": true,
@@ -412,5 +437,5 @@
           "density": 1,
           "max_wind_speed": 20
         }
-    ]
+      ]
 }

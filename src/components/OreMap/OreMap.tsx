@@ -74,11 +74,11 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
         return <tr key={bodyName}>
             <td>{bodyName}</td>
             {oreOrder.map(ore => {
-                if (ore === "Platinum") {
-                    return <td className={styles.center} key={`${bodyName}-nosurvey`} colSpan={7}>No survey data available</td>
-                } else if (["Uraninite","Trinium","Naquadah","Neutronium","Olesian","Maclarium"].includes(ore)) {
-                    return <></>;
-                }
+                // if (ore === "Platinum") {
+                //     return <td className={styles.center} key={`${bodyName}-nosurvey`} colSpan={7}>No survey data available</td>
+                // } else if (["Uraninite","Trinium","Naquadah","Neutronium","Olesian","Maclarium"].includes(ore)) {
+                //     return <></>;
+                // }
                 return <td className={styles.center} key={`${bodyName}-${ore}`}>{hasOre(bodyName, ore)}</td>
             })
             }
