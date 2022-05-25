@@ -53,6 +53,7 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
         "Naquadah",
         "Neutronium",
         // "Nickel",
+        "Olesian",
         "Olivine",
         "Petzite",
         // "Platinum",
