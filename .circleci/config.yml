@@ -8,8 +8,8 @@ jobs:
       - checkout
       - node/install-packages
       - run: npm run build
-      - run: sudo npm install -g surge
-      - run: surge build
+      #- run: sudo npm install -g surge
+      - run: npm run deploy
 workflows:
   deploy:
     jobs:
