@@ -1,7 +1,7 @@
 {
     "index": [
         {
-            "name": "SGDv4",
+            "name": "PvE",
             "hierarchy": [
                 {
                     "planet": "Elysium",
@@ -12,10 +12,6 @@
                     "moons": ["Bis"]
                 },
                 {
-                    "planet": "Caldera",
-                    "moons": ["KL-136"]
-                },
-                {
                     "planet": "Planet-26",
                     "moons": ["Ati"]
                 },
@@ -24,13 +20,22 @@
                     "moons": ["Thanian"]
                 }
             ]
+        },
+        {
+          "name": "PvP",
+          "hierarchy": [
+            {
+              "planet": "Caldera",
+              "moons": ["KL-136"]
+            }
+          ]
         }
     ],
     "celestial_bodies":[
         {
           "name": "Planet-26",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Planet-26",
           "radius": 60000.0,
           "atmosphere_radius": 105000.0,
@@ -41,7 +46,7 @@
         {
           "name": "Bis",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Bis",
           "radius": 30206.5,
           "atmosphere_radius": 52861.375,
@@ -51,7 +56,7 @@
         },
         {
           "name": "KL-136",
-          "pve": true,
+          "pve": false,
           "pvp": true,
           "definition_id": "KL-136",
           "radius": 30066.5,
@@ -63,7 +68,7 @@
         {
           "name": "Keris",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Keris",
           "radius": 60000.0,
           "atmosphere_radius": 105000.0,
@@ -74,7 +79,7 @@
         {
           "name": "Safina",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Safina",
           "radius": 60000.0,
           "atmosphere_radius": 105000.0,
@@ -84,7 +89,7 @@
         },
         {
           "name": "Caldera",
-          "pve": true,
+          "pve": false,
           "pvp": true,
           "definition_id": "Caldera",
           "radius": 60000.0,
@@ -96,7 +101,7 @@
         {
           "name": "Ati",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Ati",
           "radius": 30346.0,
           "atmosphere_radius": 53105.5,
@@ -107,7 +112,7 @@
         {
           "name": "Iyo",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Iyo",
           "radius": 30206.5,
           "atmosphere_radius": 52861.375,
@@ -118,7 +123,7 @@
         {
           "name": "Elysium",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Elysium",
           "radius": 60000.0,
           "atmosphere_radius": 105000.0,
@@ -129,7 +134,7 @@
         {
           "name": "Thanian",
           "pve": true,
-          "pvp": true,
+          "pvp": false,
           "definition_id": "Thanian",
           "radius": 30206.5,
           "atmosphere_radius": 52861.375,
