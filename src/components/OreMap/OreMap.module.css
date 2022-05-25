@@ -27,8 +27,8 @@ td, th {
 }
 
 th.oreheader {
-    /* writing-mode: vertical-lr;
-    text-orientation: sideways; */
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
     text-align: center;
 }
 

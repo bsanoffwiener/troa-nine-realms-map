@@ -1,0 +1,11 @@
+{
+    "name":"Netu",
+    "pve":true,
+    "pvp":false,
+    "definition_id":"Netu",
+    "radius":60000.0,
+    "atmosphere_radius":105000.0,
+    "x":3015256.0324444082,
+    "y":53580.619403288372,
+    "z":2564592.6512662289
+}

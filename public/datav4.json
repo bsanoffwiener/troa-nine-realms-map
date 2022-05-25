@@ -1,0 +1,501 @@
+{
+    "index": [
+        {
+            "name": "SGDv4",
+            "hierarchy": [
+                {
+                    "planet": "Elysium",
+                    "moons": ["Iyo"]
+                },
+                {
+                    "planet": "Keris",
+                    "moons": ["Bis"]
+                },
+                {
+                    "planet": "Caldera",
+                    "moons": ["KL-136"]
+                },
+                {
+                    "planet": "Planet-26",
+                    "moons": ["Ati"]
+                },
+                {
+                    "planet": "Safina",
+                    "moons": ["Thanian"]
+                }
+            ]
+        }
+    ],
+    "celestial_bodies":[
+        {
+          "name": "Planet-26",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Planet-26",
+          "radius": 60000.0,
+          "atmosphere_radius": 105000.0,
+          "x": 4431214.87228218,
+          "y": 4766993.4658785239,
+          "z": -1546557.7868631454
+        },
+        {
+          "name": "Bis",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Bis",
+          "radius": 30206.5,
+          "atmosphere_radius": 52861.375,
+          "x": -2358599.5100358869,
+          "y": -3582629.6812079819,
+          "z": -743689.53544257849
+        },
+        {
+          "name": "KL-136",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "KL-136",
+          "radius": 30066.5,
+          "atmosphere_radius": 52616.375,
+          "x": 1183078.1954471739,
+          "y": 512858.54280307237,
+          "z": -1230177.0074251266
+        },
+        {
+          "name": "Keris",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Keris",
+          "radius": 60000.0,
+          "atmosphere_radius": 105000.0,
+          "x": -2379136.63560427,
+          "y": -3571818.3747231625,
+          "z": -376301.14015542186
+        },
+        {
+          "name": "Safina",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Safina",
+          "radius": 60000.0,
+          "atmosphere_radius": 105000.0,
+          "x": 5412853.3212918565,
+          "y": 8166735.6339645414,
+          "z": -3448497.6288937703
+        },
+        {
+          "name": "Caldera",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Caldera",
+          "radius": 60000.0,
+          "atmosphere_radius": 105000.0,
+          "x": 812833.31969199749,
+          "y": 568567.13683465554,
+          "z": -1224155.70360454
+        },
+        {
+          "name": "Ati",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Ati",
+          "radius": 30346.0,
+          "atmosphere_radius": 53105.5,
+          "x": 4707744.4279921213,
+          "y": 4625785.91381318,
+          "z": -1746477.6607546294
+        },
+        {
+          "name": "Iyo",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Iyo",
+          "radius": 30206.5,
+          "atmosphere_radius": 52861.375,
+          "x": -4021585.82872954,
+          "y": -6734170.4144819444,
+          "z": 864877.63334489439
+        },
+        {
+          "name": "Elysium",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Elysium",
+          "radius": 60000.0,
+          "atmosphere_radius": 105000.0,
+          "x": -3771885.2229614574,
+          "y": -6991314.4611043595,
+          "z": 1025878.8530756303
+        },
+        {
+          "name": "Thanian",
+          "pve": true,
+          "pvp": true,
+          "definition_id": "Thanian",
+          "radius": 30206.5,
+          "atmosphere_radius": 52861.375,
+          "x": 5478010.6039043861,
+          "y": 8323620.0231934227,
+          "z": -3073672.1588663114
+        }
+      ],
+    "pois":[
+    ],
+    "sectors":[
+    ],
+    "definitions": [
+        {
+          "id": "Caldera",
+          "ores": [
+            "Kamacite",
+            "Heazlewoodite",
+            "Sinoite",
+            "Pyrite",
+            "Taenite",
+            "Cooperite",
+            "Hapkeite",
+            "Uraniaurite",
+            "Autunite",
+            "Glaucodot",
+            "Cattierite",
+            "Galena",
+            "Petzite",
+            "Porphyry",
+            "Electrum",
+            "Neutronium",
+            "Trinium",
+            "Carnotite",
+            "Olesian"
+          ],
+          "gravity": 1.16,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.1,
+          "density": 1.3,
+          "max_wind_speed": 100
+        },
+        {
+          "id": "KL-136",
+          "ores": [
+            "Ice",
+            "Taenite",
+            "Akimotoite",
+            "Hapkeite",
+            "Kamacite",
+            "Cooperite",
+            "Heazlewoodite",
+            "Cohenite",
+            "Quartz",
+            "Sinoite",
+            "Galena",
+            "Dolomite",
+            "Chlorargyrite",
+            "Sperrylite",
+            "Naquadah",
+            "Olesian"
+          ],
+          "gravity": 0.1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "max_wind_speed": 0
+        },
+        {
+          "id": "Planet-26",
+          "ores": [
+            "Heazlewoodite",
+            "Quartz",
+            "Glaucodot",
+            "Naquadah",
+            "Cattierite",
+            "Dolomite",
+            "Uraniaurite"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Ati",
+          "ores": [
+            "Taenite",
+            "Hapkeite",
+            "Pyrite",
+            "Glaucodot",
+            "Kamacite",
+            "Heazlewoodite",
+            "Quartz",
+            "Sinoite",
+            "Cattierite",
+            "Petzite",
+            "Ice",
+            "Dolomite",
+            "Porphyry",
+            "Cooperite",
+            "Neutronium"
+          ],
+          "gravity": 0.27,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.01,
+          "density": 0.05
+        },
+        {
+          "id": "Bis",
+          "ores": [
+            "Ice",
+            "Taenite",
+            "Quartz",
+            "Heazlewoodite",
+            "Sinoite",
+            "Olivine",
+            "Cattierite",
+            "Galena",
+            "Dolomite",
+            "Niggliite",
+            "Cooperite"
+          ],
+          "gravity": 0.32,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.001,
+          "density": 0.23
+        },
+        {
+          "id": "Elysium",
+          "ores": [
+            "Nickel",
+            "Silicon",
+            "Taenite",
+            "Kamacite",
+            "Hapkeite",
+            "Pyrite",
+            "Heazlewoodite",
+            "Akimotoite",
+            "Quartz",
+            "Sinoite",
+            "Cohenite",
+            "Glaucodot",
+            "Galena",
+            "Olivine",
+            "Dolomite",
+            "Ice",
+            "Cattierite",
+            "Electrum",
+            "Porphyry"
+          ],
+          "gravity": 0.94,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 1.1,
+          "density": 1.3,
+          "max_wind_speed": 95
+        },
+        {
+          "id": "EarthLike",
+          "ores": [
+            "Heazlewoodite",
+            "Hapkeite",
+            "Taenite",
+            "Sinoite",
+            "Quartz",
+            "Kamacite",
+            "Glaucodot",
+            "Cattierite",
+            "Electrum",
+            "Petzite",
+            "Dolomite",
+            "Ice",
+            "Wadsleyite",
+            "Pyrite"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Moon",
+          "ores": [
+            "Taenite",
+            "Olivine",
+            "Hapkeite",
+            "Cohenite",
+            "Dolomite",
+            "Petzite",
+            "Akimotoite"
+          ],
+          "gravity": 0.25,
+          "has_atmosphere": false
+        },
+        {
+          "id": "Europa",
+          "ores": [
+            "Heazlewoodite",
+            "Ice",
+            "Kamacite",
+            "Quartz",
+            "Olivine",
+            "Petzite",
+            "Galena",
+            "Akimotoite",
+            "Dolomite",
+            "Pyrite"
+          ],
+          "gravity": 0.25,
+          "has_atmosphere": true,
+          "breathable": false,
+          "max_wind_speed": 80
+        },
+        {
+          "id": "Kharak",
+          "ores": [
+            "Hapkeite",
+            "Glaucodot",
+            "Kamacite",
+            "Pyrite",
+            "Taenite",
+            "Cohenite",
+            "Heazlewoodite",
+            "Sinoite",
+            "Olivine",
+            "Wadsleyite",
+            "Cattierite",
+            "Chlorargyrite",
+            "Electrum",
+            "Galena",
+            "Dolomite",
+            "Akimotoite",
+            "Porphyry"
+          ],
+          "gravity": 1,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 1,
+          "density": 2,
+          "max_wind_speed": 100
+        },
+        {
+          "id": "Iyo",
+          "ores": [
+            "Taenite",
+            "Hapkeite",
+            "Pyrite",
+            "Cohenite",
+            "Heazlewoodite",
+            "Sinoite",
+            "Olivine",
+            "Quartz",
+            "Kamacite",
+            "Galena",
+            "Chlorargyrite",
+            "Dolomite",
+            "Ice",
+            "Porphyry",
+            "Electrum",
+            "Naquadah",
+            "Petzite"
+          ],
+          "gravity": 1.52,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.23,
+          "density": 0.72,
+          "max_wind_speed": 68
+        },
+        {
+          "id": "Keris",
+          "ores": [
+            "Titanium",
+            "Pyrite",
+            "Cohenite",
+            "Akimotoite",
+            "Quartz",
+            "Autunite",
+            "Cattierite",
+            "Uraniaurite",
+            "Galena",
+            "Neutronium",
+            "Naquadah"
+          ],
+          "gravity": 1.36,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.015,
+          "density": 1.4
+        },
+        {
+          "id": "Risha",
+          "ores": [
+            "Taenite",
+            "Hapkeite",
+            "Glaucodot",
+            "Kamacite",
+            "Cohenite",
+            "Olivine",
+            "Quartz",
+            "Cattierite",
+            "Galena",
+            "Electrum",
+            "Ice",
+            "Sperrylite",
+            "Pyrite",
+            "Porphyry",
+            "Cooperite"
+          ],
+          "gravity": 0.1,
+          "has_atmosphere": false
+        },
+        {
+          "id": "Safina",
+          "ores": [
+            "Hapkeite",
+            "Pyrite",
+            "Taenite",
+            "Heazlewoodite",
+            "Cohenite",
+            "Quartz",
+            "Akimotoite",
+            "Cattierite",
+            "Kamacite",
+            "Galena",
+            "Electrum",
+            "Dolomite",
+            "Wadsleyite",
+            "Porphyry"
+          ],
+          "gravity": 0.92,
+          "has_atmosphere": true,
+          "breathable": false,
+          "oxygen_density": 0.9,
+          "density": 1.1,
+          "max_wind_speed": 100
+        },
+        {
+          "id": "Thanian",
+          "ores": [
+            "Ice",
+            "Heazlewoodite",
+            "Olivine",
+            "Kamacite",
+            "Taenite",
+            "Akimotoite",
+            "Sinoite",
+            "Glaucodot",
+            "Cattierite",
+            "Cohenite",
+            "Chlorargyrite",
+            "Galena",
+            "Naquadah",
+            "Pyrite"
+          ],
+          "gravity": 0.32,
+          "has_atmosphere": true,
+          "breathable": false,
+          "max_wind_speed": 5
+        }
+      ]
+}

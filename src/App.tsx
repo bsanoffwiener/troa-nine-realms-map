@@ -24,7 +24,7 @@ export default class App extends React.Component<{}, IAppState> {
     }
 
     async loadGalaxyData() {
-        const galaxy = await loadGalaxy('datav3.json');
+        const galaxy = await loadGalaxy('datav4.json');
         this.setState({ galaxy: galaxy });
         // const t = galaxy.definitions.map(def => {
         //     const o = def.ores.sort((a, b) => a.localeCompare(b));

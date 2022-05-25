@@ -156,7 +156,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Stars />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
                 <PlayerTracker players={this.state.players} />
-                <GridTracker grids={this.state.grids} />
+                {/* <GridTracker grids={this.state.grids} /> */}
 
                 <CameraControls target={cameraLookAtPos}  />
             </Canvas>
@@ -176,7 +176,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
             <div className={styles.bottompanel}>
                 <SEButton label={indexVisible ? "Hide Index" : "Show Index"} onClick={this.onToggleIndex} />
                 <SEButton label="Show ore Map" onClick={this.onOreMapOpen} />
-                <SEButton label="Event view" onClick={this.onEventView} />
+                {/* <SEButton label="Event view" onClick={this.onEventView} /> */}
             </div>
         </div>
     }
