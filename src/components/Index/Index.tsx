@@ -113,7 +113,7 @@ export default class Index extends React.Component<IIndexProps> {
     }
 
     render() {
-        const { galaxy, grids } = this.props;
+        const { galaxy } = this.props;
         return <div className={styles.wrapper}>
             <div className={styles.title}>Map index</div>
             {this.renderIndex(galaxy)}
