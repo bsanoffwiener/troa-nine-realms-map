@@ -9,6 +9,7 @@ import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap, PlayerTr
 import styles from './GalaxyRender.module.css';
 import { scaleDivider } from "../../helpers/scale";
 import SEButton from "../SEButton/SEButton";
+import GridTracker from "../GridTracker/GridTracker";
 
 interface IGalaxyRenderProps {
     galaxy: IGalaxy;
@@ -156,7 +157,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Stars />
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
                 <PlayerTracker players={this.state.players} />
-                {/* <GridTracker grids={this.state.grids} /> */}
+                <GridTracker grids={this.state.grids} />
 
                 <CameraControls target={cameraLookAtPos}  />
             </Canvas>
