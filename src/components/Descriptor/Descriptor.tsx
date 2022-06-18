@@ -71,9 +71,7 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
 
     renderCelestialBody(body: ICelestialBody) {
         return <div className={styles.wrapper}>
-            {/* <div className={styles.title}>{planet.name}<br/>{planet.parent.name} sector</div> */}
             <div className={styles.title}>{body.name}</div>
-            {/* {planet.spawn ? <div className={styles.spawn}>This is a starter planet of {planet.parent.name} sector</div> : ''} */}
             {this.renderPlayerEnvironment(body.pvp, body.pve)}
             {body.description ? <div className={styles.description}>{body.description}</div> : ''}
             <div className={styles.grid}>
