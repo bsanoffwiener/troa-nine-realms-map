@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
 import { GPS, SEButton } from '..';
-import { ICelestialBody, ISector, ITrackedGrid } from '../../models';
+import { ICelestialBody, IEvent, ISector, ITrackedGrid } from '../../models';
 
 import styles from './Descriptor.module.css';
 
 interface IDescriptorProps {
     celestialBody?: ICelestialBody;
     grid?: ITrackedGrid;
+    event?: IEvent;
     onZoomOut: () => void;
 }
 
@@ -104,12 +105,25 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
         </div>
     }
 
+    renderEvent(event: IEvent) {
+        return <div className={styles.wrapper}>
+            <div className={styles.title}>{event.Name}</div>
+            {event.CustomData ? <ReactMarkdown>{event.CustomData}</ReactMarkdown> : ''}
+            <div className={styles.buttons}>
+                <GPS coords={[event.X, event.Y, event.Z]} name={event.Name} color={"#75C9F1"} />
+                <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
+            </div>
+        </div>
+    }
+
     render() {
-        const { celestialBody, grid } = this.props;
+        const { celestialBody, grid, event } = this.props;
         if (celestialBody) {
             return this.renderCelestialBody(celestialBody);
         } else if (grid) {
             return this.renderGrid(grid);
+        } else if (event) {
+            return this.renderEvent(event);
         } else {
             return this.renderDeepSpace({
                 name: 'Deep Space',

@@ -6,3 +6,4 @@ export * from './IGalaxy';
 export * from './ITrackedPlayer';
 export * from './ITrackedGrid';
 export * from './IIndex';
+export * from './IEvent';

@@ -7,6 +7,7 @@ export { default as Index } from './Index/Index';
 export { default as Loader } from './Loader/Loader';
 export { default as PlayerTracker } from './PlayerTracker/PlayerTracker';
 export { default as GridTracker } from './GridTracker/GridTracker';
+export { default as EventTracker } from './EventTracker/EventTracker';
 export { default as CelestialBodyRender } from './CelestialBodyRender/CelestialBodyRender';
 export { default as TextRender } from './TextRender/TextRender';
 export { default as Stars } from './Stars/Stars';

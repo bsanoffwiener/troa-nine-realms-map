@@ -18,6 +18,7 @@ declare global {
 export enum TextSize {
     Player = "0.02",
     Grid = "0.05",
+    Event = "0.05",
     Planet = "0.1"
 }
 

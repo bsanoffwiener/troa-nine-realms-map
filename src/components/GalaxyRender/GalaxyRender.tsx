@@ -3,13 +3,23 @@ import { Canvas } from '@react-three/fiber';
 import { Intersection } from "three";
 import { RootState } from "@react-three/fiber/dist/declarations/src/core/store";
 
-import { ICelestialBody, IGalaxy, ITrackedGrid, ITrackedPlayer } from '../../models';
-import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap, PlayerTracker, EventView, CameraControls } from '..';
+import { ICelestialBody, IEvent, IGalaxy, ITrackedGrid, ITrackedPlayer } from '../../models';
+import { CelestialBodyRender, Descriptor, Index, Stars, Zoomer, OreMap, PlayerTracker, EventView, CameraControls, EventTracker } from '..';
 
 import styles from './GalaxyRender.module.css';
 import { scaleDivider } from "../../helpers/scale";
 import SEButton from "../SEButton/SEButton";
 import GridTracker from "../GridTracker/GridTracker";
+
+const SGDEvents: IEvent[] = [
+    {
+        Name: "King of the Hill",
+        X: 194630.01,
+        Y: 380086.83,
+        Z: -1393234.82,
+        CustomData: "Fight for control and win big prizes!"
+    }
+];
 
 interface IGalaxyRenderProps {
     galaxy: IGalaxy;
@@ -18,6 +28,7 @@ interface IGalaxyRenderProps {
 interface IGalaxyRenderState {
     selectedCelestialBody?: ICelestialBody;
     selectedGrid?: ITrackedGrid;
+    selectedEvent?: IEvent;
     cameraTargetPos: number[];
     cameraLookAtPos: number[];
     oreMapVisible: boolean;
@@ -72,6 +83,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         this.setState({
             selectedCelestialBody: data,
             selectedGrid: undefined,
+            selectedEvent: undefined,
             cameraTargetPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider + 1],
             cameraLookAtPos: [data.x / scaleDivider, data.y / scaleDivider, data.z / scaleDivider],
         });
@@ -81,6 +93,17 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         this.setState({
             selectedCelestialBody: undefined,
             selectedGrid: data,
+            selectedEvent: undefined,
+            cameraTargetPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider + 1],
+            cameraLookAtPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider],
+        });
+    }
+
+    onEventSelected = (data: IEvent) => {
+        this.setState({
+            selectedCelestialBody: undefined,
+            selectedGrid: undefined,
+            selectedEvent: data,
             cameraTargetPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider + 1],
             cameraLookAtPos: [data.X / scaleDivider, data.Y / scaleDivider, data.Z / scaleDivider],
         });
@@ -95,7 +118,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
         });
     }
 
-    raycasterFilter = (intersects: Intersection[], state: RootState): Intersection[] => {
+    raycasterFilter = (intersects: Intersection[], _state: RootState): Intersection[] => {
         // check if planet is hit
         const planetObject = intersects.find(intersection => intersection.object.name === "Planet");
         if (planetObject) {
@@ -158,12 +181,13 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 <Zoomer targetCameraPos={cameraTargetPos} targetLookAtPos={cameraLookAtPos} />
                 <PlayerTracker players={this.state.players} />
                 <GridTracker grids={this.state.grids} />
-
+                <EventTracker events={SGDEvents} />
                 <CameraControls target={cameraLookAtPos}  />
             </Canvas>
             <Descriptor
                 celestialBody={this.state.selectedCelestialBody}
                 grid={this.state.selectedGrid}
+                event={this.state.selectedEvent}
                 onZoomOut={this.onZoomOutClick}
             />
             {oreMapVisible ? <OreMap galaxy={galaxy} onClose={this.onOreMapClose} /> : ''}
@@ -171,8 +195,10 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
                 galaxy={galaxy}
                 players={this.state.players}
                 grids={this.state.grids}
+                events={SGDEvents}
                 onCelestialBodySelected={this.onCelestialBodySelected}
                 onGridSelected={this.onGridSelected}
+                onEventSelected={this.onEventSelected}
             /> : ''}
             <div className={styles.bottompanel}>
                 <SEButton label={indexVisible ? "Hide Index" : "Show Index"} onClick={this.onToggleIndex} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICelestialBody, IGalaxy, IIndex, ITrackedGrid, ITrackedPlayer } from '../../models';
+import { ICelestialBody, IEvent, IGalaxy, IIndex, ITrackedGrid, ITrackedPlayer } from '../../models';
 
 import styles from './Index.module.css';
 
@@ -7,8 +7,10 @@ interface IIndexProps {
     galaxy: IGalaxy;
     players: ITrackedPlayer[];
     grids: ITrackedGrid[];
+    events: IEvent[];
     onCelestialBodySelected: (data: ICelestialBody) => void;
     onGridSelected: (data: ITrackedGrid) => void;
+    onEventSelected: (data: IEvent) => void;
 }
 
 export default class Index extends React.Component<IIndexProps> {
@@ -34,6 +36,10 @@ export default class Index extends React.Component<IIndexProps> {
 
     onGridClick = (grid: ITrackedGrid) => {
         this.props.onGridSelected(grid);
+    }
+
+    onEventClick = (event: IEvent) => {
+        this.props.onEventSelected(event);
     }
 
     renderHierarchy(indexEntry: IIndex): JSX.Element {
@@ -76,6 +82,24 @@ export default class Index extends React.Component<IIndexProps> {
         </>
     }
 
+    renderEvents(events: IEvent[]) {
+        if (events.length === 0) {
+            return <></>
+        }
+
+        return <>
+            <div className={styles.title}>Events</div>
+            <ul className={styles.list}>
+            {events.map(event => {
+            return (
+                <li key={event.Name}>
+                    <span onClick={() => this.onEventClick(event)}>{event.Name}</span>
+                </li>);
+            })}
+            </ul>
+        </>
+    }
+
     renderGrids(grids: ITrackedGrid[]) {
         if (grids.length === 0) {
             return <></>
@@ -113,11 +137,12 @@ export default class Index extends React.Component<IIndexProps> {
     }
 
     render() {
-        const { galaxy } = this.props;
+        const { galaxy, grids, events } = this.props;
         return <div className={styles.wrapper}>
             <div className={styles.title}>Map index</div>
             {this.renderIndex(galaxy)}
-            {/* {this.renderGrids(grids)} */}
+            {this.renderEvents(events)}
+            {this.renderGrids(grids)}
             {/* {this.renderPlayers(players)} */}
         </div>;
     }
