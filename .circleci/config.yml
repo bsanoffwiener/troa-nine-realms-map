@@ -6,8 +6,8 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages
-        override-ci-command: npm install --legacy-peer-deps
+      - node/install-packages:
+          override-ci-command: npm install --legacy-peer-deps
       - run: npm run build
       #- run: sudo npm install -g surge
       - run: npm run deploy
