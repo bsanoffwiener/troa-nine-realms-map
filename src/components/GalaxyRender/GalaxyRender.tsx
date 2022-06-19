@@ -13,11 +13,18 @@ import GridTracker from "../GridTracker/GridTracker";
 
 const SGDEvents: IEvent[] = [
     {
-        Name: "King of the Hill",
+        Name: "King of the Hill (Mon-Th)",
         X: 194630.01,
         Y: 380086.83,
         Z: -1393234.82,
-        CustomData: "Fight for control and win big prizes!"
+        CustomData: "Monday - Thursday at GMT 20:00-22:00",
+    },
+    {
+        Name: "King of the Hill (Fri-Sun)",
+        X: 782794.61,
+        Y: 248115.74,
+        Z: -1082273.34,
+        CustomData: "Friday - Sunday at GMT 20:00-22:00"
     }
 ];
 
