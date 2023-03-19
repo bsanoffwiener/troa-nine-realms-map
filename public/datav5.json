@@ -1,0 +1,217 @@
+{
+    "index": [
+        {
+            "name": "PvE",
+            "hierarchy": [
+                {
+                    "planet": "Earth",
+                    "moons": [
+                        "Vorash"
+                    ]
+                },
+                {
+                    "planet": "Heliopolis",
+                    "moons": [
+                        "Abydos"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "PvP",
+            "hierarchy": [
+                {
+                    "planet": "P3R-118",
+                    "moons": [
+                        "P3X-403"
+                    ]
+                }
+            ]
+        }
+    ],
+    "celestial_bodies": [
+        {
+            "name": "P3R-118",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Siberia",
+            "radius": 38030.5,
+            "atmosphere_radius": 66553.375,
+            "x": -2462533.6906107483,
+            "y": -1974963.555800545,
+            "z": -3669513.0960826115
+        },
+        {
+            "name": "Heliopolis",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Helghan",
+            "radius": 60000.0,
+            "atmosphere_radius": 105000.0,
+            "x": 2572327.1494278791,
+            "y": -2497597.9594925097,
+            "z": -5950280.715848837
+        },
+        {
+            "name": "Vorash",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Vorash",
+            "radius": 30001.0,
+            "atmosphere_radius": 52501.75,
+            "x": 1809678.6569806393,
+            "y": -40396.27448465112,
+            "z": -1725238.6060389823
+        },
+        {
+            "name": "Earth",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Earth",
+            "radius": 60000.0,
+            "atmosphere_radius": 105000.0,
+            "x": 862909.97976113949,
+            "y": 299840.44436885125,
+            "z": -1512604.8174889423
+        },
+        {
+            "name": "Abydos",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Pertam",
+            "radius": 30000.5,
+            "atmosphere_radius": 52500.875,
+            "x": 1902247.6297705797,
+            "y": -2650332.8047531741,
+            "z": -5832570.85772212
+        },
+        {
+            "name": "P3X-403",
+            "pve": true,
+            "pvp": false,
+            "definition_id": "Trelan",
+            "radius": 27502.0,
+            "atmosphere_radius": 48128.5,
+            "x": -2574983.444714813,
+            "y": -2387439.3594069467,
+            "z": -4472184.2675980181
+        }
+    ],
+    "pois": [],
+    "sectors": [],
+    "definitions": [
+        {
+            "id": "Helghan",
+            "ores": [
+                "Iron",
+                "Nickel",
+                "Silicon",
+                "Gold",
+                "Platinum",
+                "Cobalt",
+                "Uraninite",
+                "Silver",
+                "Magnesium"
+            ],
+            "gravity": 0.69,
+            "has_atmosphere": true,
+            "breathable": false,
+            "oxygen_density": 0.15,
+            "density": 1.2,
+            "max_wind_speed": 120
+        },
+        {
+            "id": "Earth",
+            "ores": [
+                "Iron",
+                "Nickel",
+                "Silicon",
+                "Cobalt",
+                "Silver",
+                "Magnesium",
+                "Ice",
+                "Gold"
+            ],
+            "gravity": 1,
+            "has_atmosphere": true,
+            "breathable": false,
+            "oxygen_density": 0.9,
+            "density": 1,
+            "max_wind_speed": 80
+        },
+        {
+            "id": "Vorash",
+            "ores": [
+                "Ice",
+                "Iron",
+                "Naquadah",
+                "Cobalt",
+                "Magnesium",
+                "Silicon",
+                "Silver",
+                "Uraninite",
+                "Platinum",
+                "Gold"
+            ],
+            "gravity": 1.3,
+            "has_atmosphere": true,
+            "breathable": false,
+            "oxygen_density": 0.42,
+            "density": 1.15,
+            "max_wind_speed": 110
+        },
+        {
+            "id": "Trelan",
+            "ores": [
+                "Iron",
+                "Nickel",
+                "Cobalt",
+                "Naquadah",
+                "Silicon",
+                "Silver",
+                "Gold",
+                "Magnesium",
+                "Ice"
+            ],
+            "gravity": 0.72,
+            "has_atmosphere": true,
+            "breathable": false,
+            "oxygen_density": 1,
+            "density": 1,
+            "max_wind_speed": 80
+        },
+        {
+            "id": "Siberia",
+            "ores": [
+                "Iron",
+                "Nickel",
+                "Silicon",
+                "Magnesium",
+                "Cobalt",
+                "Trinium"
+            ],
+            "gravity": 0.2,
+            "has_atmosphere": true,
+            "breathable": false,
+            "density": 0.1
+        },
+        {
+            "id": "Pertam",
+            "ores": [
+                "Iron",
+                "Nickel",
+                "Silicon",
+                "Cobalt",
+                "Silver",
+                "Magnesium",
+                "Gold"
+            ],
+            "gravity": 1.2,
+            "has_atmosphere": true,
+            "breathable": false,
+            "oxygen_density": 0.8,
+            "density": 1,
+            "max_wind_speed": 80
+        }
+    ]
+}

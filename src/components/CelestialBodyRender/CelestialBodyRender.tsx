@@ -17,7 +17,7 @@ const CelestialBodyRender: React.FC<ICelestialBodyProps> = (props: ICelestialBod
 
     const bodyMesh = useRef<Mesh>();
     const cloudsMesh = useRef<Mesh>();
-console.log(props.body);
+
     const textureBase = (props.body.definition) ? props.body.definition.id : "Triton";
 
     const colorMap = useLoader(TextureLoader, `textures/${textureBase}_color.jpg`);

@@ -18,7 +18,7 @@ interface ICoords {
 }
 
 const calculateBoundingBox = (items: ICoords[]): [ICoords, ICoords] => {
-    if (items.length === 0) {
+    if (!items || items.length === 0) {
         return [{ X: 0, Y: 0, Z: 0}, { X: 0, Y: 0, Z: 0}];
     }
     let min: ICoords = { X: items[0].X, Y: items[0].Y, Z: items[0].Z };
