@@ -32,8 +32,8 @@
     "celestial_bodies": [
         {
             "name": "P3R-118",
-            "pve": true,
-            "pvp": false,
+            "pve": false,
+            "pvp": true,
             "definition_id": "Siberia",
             "radius": 38030.5,
             "atmosphere_radius": 66553.375,
@@ -87,8 +87,8 @@
         },
         {
             "name": "P3X-403",
-            "pve": true,
-            "pvp": false,
+            "pve": false,
+            "pvp": true,
             "definition_id": "Trelan",
             "radius": 27502.0,
             "atmosphere_radius": 48128.5,
