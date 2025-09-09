@@ -1,4 +1,4 @@
-# Stargate Dimensions Map
+# TROA THE NINE REALMS Map
 
-This is a map for Stargate Dimensions Cluster server which is a Space Engineers community server. 
+This is a map for TROA The Nine Realms server which is a Space Engineers game server. 
 Map is built with React Three Fiber.

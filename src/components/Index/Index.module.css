@@ -3,10 +3,10 @@
     position: absolute;
     top: 76px;
     left: 16px;
-    background-color: rgba(26, 34, 40, 0.7);
+    background-color: rgba(139, 0, 0, 0.7);
     border: 1px solid #5C757C;
     font-family: 'Oxanium';
-    width: 180px;
+    width: 200px;
     font-size: 14px;
     /* max-height: 400px; */
     overflow: auto;

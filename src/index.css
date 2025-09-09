@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
 @font-face {
     font-family: 'Fraulein';
     src: local('Fraulein'), url(./assets/fonts/frau1.ttf) format('truetype');
@@ -8,17 +10,12 @@
     src: local('Oxanium'), url(./assets/fonts/Oxanium-Regular.ttf) format('truetype');
 }
 
-@font-face {
-    font-family: 'Stargate';
-    src: local('Stargate'), url(./assets/fonts/STARGATE.TTF) format('truetype');
-}
-
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Zen Dots', 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #222;
+    background-color: #000;
     color: #D0E8EF;
     width: 100vw;
     height: 100vh;

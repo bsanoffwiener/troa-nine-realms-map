@@ -17,4 +17,11 @@
     right: 0px;
     padding: 4px;
     font-size: 8pt;
+    text-align: center;
+}
+
+.footer_image {
+    height: 100px;
+    width: 100px;
+    opacity: 50%;
 }

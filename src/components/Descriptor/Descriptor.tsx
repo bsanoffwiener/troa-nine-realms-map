@@ -108,7 +108,7 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             <div className={styles.title}>{event.Name}</div>
             {event.CustomData ? <ReactMarkdown>{event.CustomData}</ReactMarkdown> : ''}
             <div className={styles.buttons}>
-                <GPS coords={[event.X, event.Y, event.Z]} name={event.Name} color={"#75C9F1"} />
+                <GPS coords={[event.X, event.Y, event.Z]} name={event.Name} color={"#8B0000"} />
                 <SEButton label="Zoom out" onClick={this.props.onZoomOut}/>
             </div>
         </div>
@@ -124,7 +124,7 @@ export default class Descriptor extends React.Component<IDescriptorProps> {
             return this.renderEvent(event);
         } else {
             return this.renderDeepSpace({
-                name: 'Deep Space',
+                name: 'Himinrúm Space',
                 pve: true,
                 pvp: true,
                 asteroids: {

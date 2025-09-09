@@ -3,7 +3,7 @@
     position: absolute;
     top: 76px;
     right: 16px;
-    background-color: rgba(26, 34, 40, 0.7);
+    background-color: rgba(139, 0, 0, 0.7);
     border: 1px solid #5C757C;
     border: 1px solid #5C757C;
     font-family: 'Oxanium';
@@ -80,5 +80,5 @@
 }
 
 .pvp {
-    color: #CC2222;
+    color: #FFD700;
 }

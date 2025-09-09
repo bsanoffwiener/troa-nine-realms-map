@@ -78,7 +78,7 @@ export default class GalaxyRender extends React.Component<IGalaxyRenderProps, IG
     }
 
     private async doTick() {
-        const response = await fetch('https://sg-tracker.infcore.net/data/get');
+        const response = await fetch('https://setool.therealmsofasgard.com/data/get');
         const data: {
             players: ITrackedPlayer[];
             grids: ITrackedGrid[];
