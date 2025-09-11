@@ -126,7 +126,7 @@ const OreMap: React.FC<IOreMapProps> = (props) => {
     }
 
     return <div className={styles.wrapper}>
-        <h1>The Realms of Asgard Dimensions ore map</h1>
+        <h1>The Realms of Asgard ore map</h1>
         <table>
             <thead>
                 <tr>
