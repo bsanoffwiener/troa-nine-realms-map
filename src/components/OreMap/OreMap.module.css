@@ -1,7 +1,7 @@
 .wrapper {
     position: fixed;
     z-index: 10;
-    background-color: rgba(26, 34, 40, 1.0);
+    background-color: #000;
     font-family: 'Oxanium';
     border: 1px solid #5C757C;
     padding: 16px;
